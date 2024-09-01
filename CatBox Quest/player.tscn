@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d44nf4yhbh64"]
+
+[ext_resource type="Texture2D" uid="uid://ffr6hmq22xqk" path="res://assets/littleCatTestTileset.png" id="2_4ksq4"]
+[ext_resource type="Script" path="res://player.gd" id="2_ltrsa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r788b"]
+atlas = ExtResource("2_4ksq4")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcapw"]
+atlas = ExtResource("2_4ksq4")
+region = Rect2(16, 96, 16, 16)
+
+[node name="Player" type="Sprite2D"]
+position = Vector2(72, 8)
+texture = SubResource("AtlasTexture_r788b")
+script = ExtResource("2_ltrsa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_lcapw")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 16)
+collide_with_areas = true
