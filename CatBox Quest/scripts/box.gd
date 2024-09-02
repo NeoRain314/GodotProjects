@@ -1,5 +1,5 @@
 extends Sprite2D
-@export var debug_color_setting = 0
+@export var debug_color_setting = 1
 var is_moving = false
 
 func _ready():
@@ -18,10 +18,11 @@ func _process(delta):
 	pass
 
 
-func _on_player_move_box(direction, solid):
+func _on_player_move_box(direction, box_can_move):
 	print("box")
-	if solid:
-		return
+	if !box_can_move:
+		pass
+		#return
 
 	var x = $BoxSprite2D.global_position
 	global_position.x += direction.x * 16

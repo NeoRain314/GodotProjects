@@ -1,7 +1,5 @@
 extends Sprite2D
 
-signal moveBox
-
 @onready var tile_map = $"../TileMap"
 
 
@@ -57,14 +55,13 @@ func move(direction: Vector2):
 			target_tile.y + direction.y,
 		)
 		var box_tile_data: TileData = tile_map.get_cell_tile_data(0, box_target_tile)
-		var box_targed_tile_solid = false
+		var box_can_move = true
 		if box_tile_data.get_custom_data("solid") == true:
-			box_targed_tile_solid = true
+			box_can_move = false
+			return #player and box dont move
 		
 		var box = $RayCast2D.get_collider().get_parent()
-		box._on_player_move_box(direction, box_targed_tile_solid)
-		
-		#moveBox.emit(direction, box_targed_tile_solid)
+		box._on_player_move_box(direction, box_can_move)
 	
 	# move player ----------------------------------------
 	is_moving = true

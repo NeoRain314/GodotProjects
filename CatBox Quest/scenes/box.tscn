@@ -26,3 +26,4 @@ texture = SubResource("AtlasTexture_15jjm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_vjd1y")
+debug_color = Color(0.102397, 0.45977, 0.562061, 0.42)

@@ -53,6 +53,3 @@ position = Vector2(136, 24)
 
 [node name="Box2" parent="." instance=ExtResource("3_8qftl")]
 position = Vector2(88, 24)
-debug_color_setting = 10
-
-[connection signal="moveBox" from="Player" to="Box" method="_on_player_move_box"]
