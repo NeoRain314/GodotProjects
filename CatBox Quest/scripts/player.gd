@@ -51,6 +51,7 @@ func move(direction: Vector2):
 	$RayCast2D.force_raycast_update()
 
 	if $RayCast2D.is_colliding():
+		print($RayCast2D.get_collider())
 		var box_target_tile: Vector2i = Vector2i(
 			target_tile.x + direction.x,
 			target_tile.y + direction.y,
@@ -60,7 +61,10 @@ func move(direction: Vector2):
 		if box_tile_data.get_custom_data("solid") == true:
 			box_targed_tile_solid = true
 		
-		moveBox.emit(direction, box_targed_tile_solid)
+		var box = $RayCast2D.get_collider().get_parent()
+		box._on_player_move_box(direction, box_targed_tile_solid)
+		
+		#moveBox.emit(direction, box_targed_tile_solid)
 	
 	# move player ----------------------------------------
 	is_moving = true

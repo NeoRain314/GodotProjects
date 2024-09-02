@@ -1,6 +1,9 @@
 extends Sprite2D
-
+@export var debug_color_setting = 0
 var is_moving = false
+
+func _ready():
+	$Area2D/CollisionShape2D.debug_color = debug_color_setting
 
 func _physics_process(delta): #smoothly move player
 	if is_moving == false:

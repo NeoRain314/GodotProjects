@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnuqkuendnyh3"]
 
-[ext_resource type="Script" path="res://testPlayer.gd" id="1_2co8f"]
-[ext_resource type="Texture2D" uid="uid://168e3duyv53v" path="res://assets/kenney_pixel-platformer-blocks/Tiles/Marble/tile_0015.png" id="2_p7b6l"]
+[ext_resource type="Script" path="res://scripts/testPlayer.gd" id="1_2co8f"]
+[ext_resource type="Texture2D" path="res://assets/kenney_pixel-platformer-blocks/Tiles/Marble/tile_0015.png" id="2_p7b6l"]
 
 [node name="player" type="Area2D"]
 script = ExtResource("1_2co8f")

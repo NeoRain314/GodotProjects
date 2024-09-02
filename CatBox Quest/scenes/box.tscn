@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://csk50xgnp4st"]
 
 [ext_resource type="Texture2D" uid="uid://ffr6hmq22xqk" path="res://assets/littleCatTestTileset.png" id="1_yux1r"]
-[ext_resource type="Script" path="res://box.gd" id="2_5i0ex"]
+[ext_resource type="Script" path="res://scripts/box.gd" id="2_dpfnd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0crl"]
 atlas = ExtResource("1_yux1r")
@@ -17,7 +17,7 @@ size = Vector2(16, 16)
 [node name="Box" type="Sprite2D"]
 position = Vector2(88, 8)
 texture = SubResource("AtlasTexture_j0crl")
-script = ExtResource("2_5i0ex")
+script = ExtResource("2_dpfnd")
 
 [node name="BoxSprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_15jjm")
