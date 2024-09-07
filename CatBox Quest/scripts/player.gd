@@ -30,38 +30,30 @@ func _process(delta):
 		
 		
 func move(direction: Vector2):
-	# get current tile Vector2i
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
-	# get target tile Vector 2i
 	var target_tile: Vector2i = Vector2i(
 		current_tile.x + direction.x,
 		current_tile.y + direction.y,
 	)
-	#prints(current_tile, target_tile)
-	
-	# get custom data layer from the target tile
 	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
+	
 	
 	if tile_data.get_custom_data("solid") == true:
 		return
 		
 	$RayCast2D.target_position = direction * 16
 	$RayCast2D.force_raycast_update()
+	
+	#if $Area2D.get_overlapping_areas():
+	#	print($Area2D.get_overlapping_areas())
 
 	if $RayCast2D.is_colliding():
-		print($RayCast2D.get_collider())
-		var box_target_tile: Vector2i = Vector2i(
-			target_tile.x + direction.x,
-			target_tile.y + direction.y,
-		)
-		var box_tile_data: TileData = tile_map.get_cell_tile_data(0, box_target_tile)
-		var box_can_move = true
-		if box_tile_data.get_custom_data("solid") == true:
-			box_can_move = false
-			return #player and box dont move
-		
+		#print($RayCast2D.get_collider())
 		var box = $RayCast2D.get_collider().get_parent()
-		box._on_player_move_box(direction, box_can_move)
+		if box.canMove(direction) && checkAreaCanMove(direction):
+			box._on_player_move_box(direction)
+		else:
+			return
 	
 	# move player ----------------------------------------
 	is_moving = true
@@ -69,9 +61,14 @@ func move(direction: Vector2):
 	global_position = tile_map.map_to_local(target_tile)
 	
 	$Sprite2D.global_position = tile_map.map_to_local(current_tile)
-	
 
-
-	
-	
-	
+func checkAreaCanMove(direction): 
+	if direction.x > 0:
+		return $Area2D_right.get_overlapping_areas().size() == 0
+	if direction.x < 0:
+		return $Area2D_left.get_overlapping_areas().size() == 0
+	if direction.y > 0:
+		return $Area2D_down.get_overlapping_areas().size() == 0
+	if direction.y < 0:
+		return $Area2D_up.get_overlapping_areas().size() == 0
+	return true
