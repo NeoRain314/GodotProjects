@@ -17,7 +17,7 @@ func _physics_process(delta): #smoothly move player
 	$BoxSprite2D.global_position = $BoxSprite2D.global_position.move_toward(global_position, 1)
 
 func _process(delta):
-	pass
+	checkOnGoal()
 
 #------------------------------------------------------------------------------------------------
 
@@ -43,3 +43,6 @@ func _on_player_move_box(direction):
 	global_position.y += direction.y * 16
 	$BoxSprite2D.global_position = x
 	is_moving = true
+
+func checkOnGoal():
+	pass

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyibyctcmf4bn"]
+[gd_scene load_steps=7 format=3 uid="uid://cyibyctcmf4bn"]
 
 [ext_resource type="Texture2D" uid="uid://ffr6hmq22xqk" path="res://assets/littleCatTestTileset.png" id="1_ex34h"]
 [ext_resource type="PackedScene" uid="uid://d44nf4yhbh64" path="res://scenes/player.tscn" id="2_x07fi"]
 [ext_resource type="PackedScene" uid="uid://csk50xgnp4st" path="res://scenes/box.tscn" id="3_8qftl"]
+[ext_resource type="PackedScene" uid="uid://bgrjaiaspr2rl" path="res://scenes/box_goal.tscn" id="4_nr32n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdc72"]
 texture = ExtResource("1_ex34h")
@@ -53,3 +54,6 @@ position = Vector2(136, 24)
 
 [node name="Box2" parent="." instance=ExtResource("3_8qftl")]
 position = Vector2(88, 24)
+
+[node name="BoxGoal" parent="." instance=ExtResource("4_nr32n")]
+position = Vector2(136, 72)

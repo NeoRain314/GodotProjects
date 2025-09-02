@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgrjaiaspr2rl"]
+
+[ext_resource type="Texture2D" uid="uid://c6cfcwmtgg62b" path="res://assets/CatBoxGame_Tileset.png" id="1_o8lnt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8w0s0"]
+atlas = ExtResource("1_o8lnt")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mwvl1"]
+size = Vector2(16, 16)
+
+[node name="BoxGoal" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_8w0s0")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mwvl1")

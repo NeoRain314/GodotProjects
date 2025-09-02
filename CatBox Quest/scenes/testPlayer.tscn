@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnuqkuendnyh3"]
 
-[ext_resource type="Script" path="res://scripts/testPlayer.gd" id="1_2co8f"]
-[ext_resource type="Texture2D" path="res://assets/kenney_pixel-platformer-blocks/Tiles/Marble/tile_0015.png" id="2_p7b6l"]
+[ext_resource type="Script" uid="uid://dsy7lk12edcug" path="res://scripts/testPlayer.gd" id="1_2co8f"]
+
+[sub_resource type="Resource" id="Resource_8p82l"]
+metadata/__load_path__ = "res://assets/kenney_pixel-platformer-blocks/Tiles/Marble/tile_0015.png"
 
 [node name="player" type="Area2D"]
 script = ExtResource("1_2co8f")
@@ -10,4 +12,4 @@ script = ExtResource("1_2co8f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(9, 9)
-texture = ExtResource("2_p7b6l")
+texture = SubResource("Resource_8p82l")

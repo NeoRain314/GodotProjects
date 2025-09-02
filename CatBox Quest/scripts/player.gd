@@ -1,3 +1,7 @@
+# --------- ToDo ----------------------
+# - check with witch area2d box is colliding so it notices if there is another box or a goal and acts right!
+# -------------------------------------
+
 extends Sprite2D
 
 @onready var tile_map = $"../TileMap"
