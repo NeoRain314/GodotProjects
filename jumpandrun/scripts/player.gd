@@ -44,7 +44,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+	#move box
+	var collision = move_and_collide(velocity * delta)
+	
+	if collision:
+		if collision.get_collider() is CharacterBody2D:
+			var box = collision.get_collider()
+			var push_force = velocity.x / 1.5
+			box.velocity.x = push_force
+	
+	#move character
 	move_and_slide()
+	
 
 
 var score = 0

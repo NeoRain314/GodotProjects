@@ -118,4 +118,4 @@ text = "Space
 toJump"
 
 [node name="Box" parent="." instance=ExtResource("6_3nxvk")]
-position = Vector2(-22, -22)
+position = Vector2(-19, 9)
