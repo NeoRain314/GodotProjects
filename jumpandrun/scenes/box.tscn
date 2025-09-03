@@ -5,14 +5,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3inec"]
 size = Vector2(16, 16)
 
-[node name="Node2D" type="Node2D"]
+[node name="RigidBody2D" type="RigidBody2D"]
+mass = 0.01
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3inec")
 region_enabled = true
 region_rect = Rect2(80, 16, 16, 16)
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3inec")

@@ -5,6 +5,8 @@ var coins = 0
 const SPEED = 80.0
 const JUMP_VELOCITY = -270.0
 
+@export var player_number: int = 1
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var coin_label: Label = $coin_label
 @onready var display_coin_timer: Timer = $display_coin_timer
@@ -16,11 +18,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("p1_jump") and is_on_floor():
+	if Input.is_action_just_pressed("p" + str(player_number) + "_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction: -1, 0, 1
-	var direction := Input.get_axis("p1_move_left", "p1_move_right")
+	var direction := Input.get_axis("p" + str(player_number) + "_move_left", "p" + str(player_number) + "_move_right")
 	
 	# Flip the Sprite
 	if direction > 0:
@@ -31,11 +33,11 @@ func _physics_process(delta: float) -> void:
 	# Play animation
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite.play("p1_idle")
+			animated_sprite.play("p" + str(player_number) + "_idle")
 		else:
-			animated_sprite.play("p1_run")
+			animated_sprite.play("p" + str(player_number) + "_run")
 	else:
-		animated_sprite.play("p1_jump")
+		animated_sprite.play("p" + str(player_number) + "_jump")
 	
 	if direction:
 		velocity.x = direction * SPEED
