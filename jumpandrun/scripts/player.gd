@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var coins = 0
 
-const SPEED = 80.0
-const JUMP_VELOCITY = -270.0
+const SPEED = 50.0
+const JUMP_VELOCITY = -210.0
 
 @export var player_number: int = 1
 
