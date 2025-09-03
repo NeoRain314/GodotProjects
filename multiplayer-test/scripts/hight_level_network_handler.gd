@@ -1,7 +1,7 @@
 extends Node
 
-const IP_ADDRESS: String = "localhost"
-const PORT: int = 42068
+var IP_ADDRESS: String = "localhost"
+var PORT: int = 42068
 
 var peer: ENetMultiplayerPeer
 
