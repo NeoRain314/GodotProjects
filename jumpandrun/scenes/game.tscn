@@ -31,14 +31,14 @@ position = Vector2(51, -31)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Player_1" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-62, -1)
+position = Vector2(-105, -20)
 
 [node name="Camera2D" type="Camera2D" parent="Player_1"]
 zoom = Vector2(4, 4)
 limit_smoothed = true
 
 [node name="Player_2" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-139, 1)
+position = Vector2(-136, -39)
 player_number = 2
 
-[node name="Node2D" parent="." instance=ExtResource("5_p57ef")]
+[node name="Level_2" parent="." instance=ExtResource("5_p57ef")]
