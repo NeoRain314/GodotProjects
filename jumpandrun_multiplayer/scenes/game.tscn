@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://7p14jdcrvx5n"]
+
+[ext_resource type="Script" uid="uid://diiey0d3fvfnd" path="res://scripts/game_manager.gd" id="1_gee14"]
+[ext_resource type="PackedScene" uid="uid://du80l5viboow6" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="FontFile" uid="uid://d0oqp3oyuthv2" path="res://assets/old/fonts/PixelOperator8-Bold.ttf" id="2_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://idcub1oc4crv" path="res://scenes/killzone.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://dxl1elqi2rjyr" path="res://scenes/Level/Level_1.tscn" id="5_p57ef"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
+distance = -127.0
+
+[node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_gee14")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+offset_left = 688.0
+offset_top = -41.0
+offset_right = 843.0
+offset_bottom = -33.0
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("2_0tnpc")
+theme_override_font_sizes/font_size = 8
+text = "You collected 0 coins!"
+
+[node name="killzone" parent="." instance=ExtResource("5_iywne")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(51, -31)
+shape = SubResource("WorldBoundaryShape2D_p57ef")
+
+[node name="Player_1" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-272, -35)
+
+[node name="Camera2D" type="Camera2D" parent="Player_1"]
+zoom = Vector2(4, 4)
+limit_smoothed = true
+
+[node name="Level_1" parent="." instance=ExtResource("5_p57ef")]
+
+[node name="MultiplayerHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="MultiplayerHUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerHUD/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="MultiplayerHUD/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="MultiplayerHUD/Panel/VBoxContainer"]
+layout_mode = 2

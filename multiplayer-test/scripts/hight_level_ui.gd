@@ -2,6 +2,7 @@ extends Control
 @onready var ip_address_input: LineEdit = $IpAddress_Input
 
 
+
 func _on_server_button_pressed() -> void:
 	if !ip_address_input.text:
 		ip_address_input.add_theme_color_override("font_placeholder_color", "darkred")
