@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://du80l5viboow6" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="FontFile" uid="uid://d0oqp3oyuthv2" path="res://assets/old/fonts/PixelOperator8-Bold.ttf" id="2_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://idcub1oc4crv" path="res://scenes/killzone.tscn" id="5_iywne"]
-[ext_resource type="PackedScene" uid="uid://bwueu4jyi45dq" path="res://scenes/Level/Level_2.tscn" id="5_p57ef"]
+[ext_resource type="PackedScene" uid="uid://dxl1elqi2rjyr" path="res://scenes/Level/Level_1.tscn" id="5_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p57ef"]
 distance = -127.0
@@ -31,14 +31,15 @@ position = Vector2(51, -31)
 shape = SubResource("WorldBoundaryShape2D_p57ef")
 
 [node name="Player_1" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-105, -20)
+position = Vector2(-269, -27)
 
 [node name="Camera2D" type="Camera2D" parent="Player_1"]
 zoom = Vector2(4, 4)
 limit_smoothed = true
 
 [node name="Player_2" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(-136, -39)
+position = Vector2(-350, -79)
 player_number = 2
 
-[node name="Level_2" parent="." instance=ExtResource("5_p57ef")]
+[node name="Level_1" parent="." instance=ExtResource("5_p57ef")]
+position = Vector2(-2, 4)

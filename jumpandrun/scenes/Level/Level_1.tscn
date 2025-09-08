@@ -225,14 +225,5 @@ position = Vector2(-1, -8)
 [node name="Box4" parent="." instance=ExtResource("6_f63rn")]
 position = Vector2(-1, -27)
 
-[node name="Box5" parent="." instance=ExtResource("6_f63rn")]
-position = Vector2(-1, -50)
-
-[node name="Box6" parent="." instance=ExtResource("6_f63rn")]
-position = Vector2(-1, -72)
-
-[node name="Box7" parent="." instance=ExtResource("6_f63rn")]
-position = Vector2(-1, -91)
-
 [node name="Box2" parent="." instance=ExtResource("6_f63rn")]
 position = Vector2(197, -89)

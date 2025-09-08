@@ -8,12 +8,19 @@ var player_number: int = 1
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction = 1
-
+var do_jump = false
+var _is_on_floor = true
 
 @export var player_id := 1:
 	set(id):
 		player_id = id
 		%InputSynchronizer.set_multiplayer_authority(id)
+
+func _ready() -> void:
+	if multiplayer.get_unique_id() == player_id:
+		$Camera2D.make_current()
+	else:
+		$Camera2D.enabled = false
 
 func _apply_animations(delta):
 	# Flip the Sprite
@@ -23,7 +30,7 @@ func _apply_animations(delta):
 		animated_sprite.flip_h = true
 	
 	# Play animation
-	if is_on_floor():
+	if _is_on_floor:
 		if direction == 0:
 			animated_sprite.play("p" + str(player_number) + "_idle")
 		else:
@@ -37,11 +44,12 @@ func _apply_movement_from_input(delta):
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("p" + str(player_number) + "_jump") and is_on_floor():
+	if do_jump and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		do_jump = false
 
 	# Get the input direction: -1, 0, 1
-	var direction = %InputSynchronizer.input_direction
+	direction = %InputSynchronizer.input_direction
 	
 	
 	
@@ -66,3 +74,5 @@ func _apply_movement_from_input(delta):
 func _physics_process(delta: float) -> void:
 	if multiplayer.is_server():
 		_apply_movement_from_input(delta)
+	if not multiplayer.is_server():
+		_apply_animations(delta)
