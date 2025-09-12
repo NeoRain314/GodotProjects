@@ -6,12 +6,15 @@ const SERVER_IP = "localhost"
 var multiplayer_scene = preload("res://scenes/multiplayer_player.tscn")
 
 var _players_spawn_node
+var host_mode_enabled = false;
 
 func become_host():
 	print("Starting host")
 	
 	
 	_players_spawn_node = get_tree().current_scene.get_node("Players")
+	
+	host_mode_enabled = true
 	
 	var server_peer = ENetMultiplayerPeer.new()
 	server_peer.create_server(SERVER_PORT)

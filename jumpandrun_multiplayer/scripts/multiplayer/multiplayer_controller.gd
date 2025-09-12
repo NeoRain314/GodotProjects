@@ -16,6 +16,13 @@ var _is_on_floor = true
 		player_id = id
 		%InputSynchronizer.set_multiplayer_authority(id)
 
+
+# Stuff for collecting coins
+@onready var coin_label: Label = $coin_label
+@onready var display_coin_timer: Timer = $display_coin_timer
+var coins = 0
+
+
 func _ready() -> void:
 	if multiplayer.get_unique_id() == player_id:
 		$Camera2D.make_current()
@@ -73,6 +80,26 @@ func _apply_movement_from_input(delta):
 
 func _physics_process(delta: float) -> void:
 	if multiplayer.is_server():
+		_is_on_floor = is_on_floor()
 		_apply_movement_from_input(delta)
-	if not multiplayer.is_server():
+		
+	if not multiplayer.is_server() || MultiplayerManager.host_mode_enabled:
 		_apply_animations(delta)
+
+
+
+
+
+
+func add_point():
+	coins += 1
+	print(coins)
+	if coins == 1:
+		coin_label.text = str(coins) + " coin"
+	else:
+		coin_label.text = str(coins) + " coins"
+	display_coin_timer.start()
+
+
+func _on_display_coin_timer_timeout() -> void:
+	coin_label.text = ""

@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://chl2s6jvcgbxm"]
+[gd_scene load_steps=44 format=3 uid="uid://chl2s6jvcgbxm"]
 
 [ext_resource type="Script" uid="uid://n0iuhhcdeny2" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_47gve"]
 [ext_resource type="Texture2D" uid="uid://bcxqr6mdloqif" path="res://assets/blue_character_tileset.png" id="2_2d20i"]
 [ext_resource type="Script" uid="uid://cmh8puxilguct" path="res://scripts/multiplayer/multiplayer_input.gd" id="2_k8tkd"]
 [ext_resource type="Texture2D" uid="uid://ri0x8eko6j8j" path="res://assets/lightblue_character_tileset.png" id="3_k8tkd"]
+[ext_resource type="FontFile" uid="uid://bshgoj527ohgn" path="res://assets/old/fonts/PixelOperator8.ttf" id="5_jlq18"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k8tkd"]
 properties/0/path = NodePath(".:player_id")
@@ -302,6 +303,8 @@ animations = [{
 size = Vector2(9, 13)
 
 [node name="MultiplayerPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_47gve")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -325,3 +328,19 @@ shape = SubResource("RectangleShape2D_xk3hh")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 limit_smoothed = true
+
+[node name="coin_label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -23.0
+offset_right = 22.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0.278431, 0.686275, 0.843137, 1)
+theme_override_fonts/font = ExtResource("5_jlq18")
+theme_override_font_sizes/font_size = 8
+text = "0 coins"
+
+[node name="display_coin_timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="display_coin_timer" to="." method="_on_display_coin_timer_timeout"]
