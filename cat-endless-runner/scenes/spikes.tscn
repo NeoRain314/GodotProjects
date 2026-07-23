@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://34kpi8ehd66i"]
+
+[ext_resource type="Texture2D" uid="uid://cqc02uodohoqt" path="res://assets/img/Spikes.png" id="1_5pg7g"]
+
+[node name="Spikes" type="Area2D" unique_id=365760731]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=162207283]
+texture = ExtResource("1_5pg7g")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=497102688]
+polygon = PackedVector2Array(0, 16, -8, 0, -16, 16, 16, 16, 8, 0)
