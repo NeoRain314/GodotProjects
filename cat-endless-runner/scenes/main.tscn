@@ -13,6 +13,7 @@ script = ExtResource("1_jyhfs")
 scroll_offset = Vector2(565, 250)
 
 [node name="Ground" parent="." unique_id=1238342862 instance=ExtResource("2_1bvp3")]
+position = Vector2(0, 356)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1392212481]
 position = Vector2(320, 184)
