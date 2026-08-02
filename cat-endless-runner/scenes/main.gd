@@ -1,14 +1,25 @@
 extends Node
 
+#preload scenes
+var spikes_scene = preload("res://assets/img/Spikes.png")
+var obstacle_types := [spikes_scene]
+var obstacles : Array
+
+# variables
 const PLAYER_START_POS := Vector2i(75, 244)
 const CAM_START_POS := Vector2i(320, 184)
+var screen_size : Vector2i
+var game_running : bool
+
 var score : int
 var highscore : int
+
 var speed : float
 const START_SPEED : float = 10.0
 const MAX_SPEED : int = 25
-var screen_size : Vector2i
-var game_running : bool
+const SPEED_MODIFIER : int = 5000
+
+var last obs
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +40,15 @@ func new_game():
 	
 	#reset hud
 	$HUD.get_node("StartLabel").show()
-
+	$HUD.get_node("HighscoreLabel").hide()
+	$HUD.get_node("ScoreLabel").hide()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if game_running:
-		speed = START_SPEED
+		if speed < MAX_SPEED:
+			speed = START_SPEED + score / SPEED_MODIFIER
+		print(speed)
 		
 		#move player an cam
 		$Player.position.x += speed
@@ -43,7 +58,7 @@ func _process(delta: float) -> void:
 		score += speed
 		if score > highscore:
 			highscore = score
-		print(score)
+		#print(score)
 		show_score()
 		
 		#update ground position
@@ -53,6 +68,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("ui_accept"):
 			game_running = true
 			$HUD.get_node("StartLabel").hide()
+			$HUD.get_node("HighscoreLabel").show()
+			$HUD.get_node("ScoreLabel").show()	
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "Score: " + str(score)

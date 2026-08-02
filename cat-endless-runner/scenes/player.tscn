@@ -80,7 +80,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=533653802]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_oglxd")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="RunColision" type="CollisionShape2D" parent="." unique_id=716855436]
