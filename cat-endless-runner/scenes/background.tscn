@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bpiwnicw0kkw0" path="res://assets/img/background/background_04.png" id="1_splo0"]
 [ext_resource type="Texture2D" uid="uid://c1pxjmr3pe2s3" path="res://assets/img/background/background_01.png" id="2_eq6nc"]
+[ext_resource type="Script" uid="uid://dnm2e38bsupts" path="res://scenes/sky_background.gd" id="2_wisxt"]
 [ext_resource type="Texture2D" uid="uid://bnh5tjh4e5hri" path="res://assets/img/background/background_02.png" id="3_bpugw"]
 [ext_resource type="Texture2D" uid="uid://b7ruifcfpm7vu" path="res://assets/img/background/background_03.png" id="4_gjjrj"]
 
@@ -13,6 +14,7 @@ position = Vector2(-564, -247)
 scale = Vector2(2, 2)
 texture = ExtResource("1_splo0")
 centered = false
+script = ExtResource("2_wisxt")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1895153374]
 scroll_scale = Vector2(0.6, 0.6)
