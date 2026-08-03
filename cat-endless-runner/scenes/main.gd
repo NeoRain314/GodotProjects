@@ -11,6 +11,7 @@ const CAM_START_POS := Vector2i(320, 184)
 var screen_size : Vector2i
 var ground_height : int
 var game_running : bool
+var is_game_over : bool
 
 var score : int
 var highscore : int
@@ -33,6 +34,7 @@ func new_game():
 	#reset variables
 	score = 0
 	highscore = 0
+	is_game_over = false
 	
 	#reset nodes
 	$Player.position = PLAYER_START_POS
@@ -42,15 +44,16 @@ func new_game():
 	
 	#reset hud
 	$HUD.get_node("StartLabel").show()
+	$HUD.get_node("GameoverLabel").hide()
 	$HUD.get_node("HighscoreLabel").hide()
 	$HUD.get_node("ScoreLabel").hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if game_running:
+	if game_running and !is_game_over:
 		if speed < MAX_SPEED:
 			speed = START_SPEED + score / SPEED_MODIFIER
-		print(speed)
+		#print(speed)
 		
 		#generate obstacles
 		generate_obs()
@@ -69,12 +72,22 @@ func _process(delta: float) -> void:
 		#update ground position
 		if $Camera2D.position.x - $Ground.position.x > screen_size.x * 1.5:
 			$Ground.position.x += screen_size.x
+			
+		#remove obstacles
+		for obs in obstacles:
+			if obs.position.x < ($Camera2D.position.x - screen_size.x):
+				remove_obs(obs)
+		
 	else:
 		if Input.is_action_pressed("ui_accept"):
-			game_running = true
-			$HUD.get_node("StartLabel").hide()
-			$HUD.get_node("HighscoreLabel").show()
-			$HUD.get_node("ScoreLabel").show()	
+			if is_game_over:
+				print("restart")
+				new_game()
+			else:
+				game_running = true
+				$HUD.get_node("StartLabel").hide()
+				$HUD.get_node("HighscoreLabel").show()
+				$HUD.get_node("ScoreLabel").show()	
 
 func show_score():
 	$HUD.get_node("ScoreLabel").text = "Score: " + str(score)
@@ -82,7 +95,7 @@ func show_score():
 
 func generate_obs():
 	if obstacles.is_empty() or last_obs.position.x < $Player.position.x - randi_range(300, 500):
-		print("new obs")
+		#print("new obs")
 		var obs_type = obstacle_types[randi() % obstacle_types.size()]
 		var obs
 		var max_obs = 3
@@ -97,5 +110,21 @@ func generate_obs():
 		
 func add_obs(obs, x,y):
 	obs.position = Vector2i(x, y)
+	obs.body_entered.connect(collide_obs)
 	add_child(obs)
 	obstacles.append(obs)
+
+func remove_obs(obs):
+	obs.queue_free()
+	obstacles.erase(obs)
+	
+func collide_obs(body):
+	if body.name == "Player":
+		game_over()
+		
+func game_over():
+	game_running = false
+	is_game_over = true
+	$HUD.get_node("GameoverLabel").show()
+	$HUD.get_node("StartLabel").text = "Press space to restart!"
+	$HUD.get_node("StartLabel").show()
