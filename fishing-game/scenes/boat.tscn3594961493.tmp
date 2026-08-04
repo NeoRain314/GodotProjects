@@ -49,7 +49,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m2jbu")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"splash",
 "speed": 5.0
 }]

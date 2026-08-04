@@ -10,9 +10,15 @@ var _time : float
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	sway_center_x = position.x
+	$splash.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_time += delta
 	position.x = sway_center_x + sin(_time * sway_speed) * sway_distance
 	rotation = sin(_time * sway_speed) * deg_to_rad(max_tilt_degrees)
+	
+	if randi() % 100 == 0:
+		$splash.visible = true
+		$splash.play("splash")
+	if !$splash.is_playing(): $splash.visible = false
