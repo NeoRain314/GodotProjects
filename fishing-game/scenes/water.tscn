@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://doodhyny7bqo"]
+
+[ext_resource type="Texture2D" uid="uid://dy1wsls8drpmt" path="res://assets/Water_3.png" id="1_p1n2c"]
+[ext_resource type="Texture2D" uid="uid://dnv04w12fkufy" path="res://assets/Water_2.png" id="2_ewrsg"]
+[ext_resource type="Texture2D" uid="uid://bgl04vd8ybity" path="res://assets/Water_1.png" id="3_fiwy5"]
+
+[node name="Water" type="Node2D" unique_id=1296930]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2048215352]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(320, 360)
+autoscroll = Vector2(1, 10)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=95260146]
+texture = ExtResource("1_p1n2c")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1041034522]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(320, 360)
+autoscroll = Vector2(3, 15)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=82786750]
+texture = ExtResource("2_ewrsg")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=392229966]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(320, 360)
+autoscroll = Vector2(4, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=313200647]
+texture = ExtResource("3_fiwy5")
+centered = false

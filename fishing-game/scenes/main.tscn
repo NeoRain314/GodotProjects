@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c5744s7byhirb"]
+
+[ext_resource type="PackedScene" uid="uid://doodhyny7bqo" path="res://scenes/water.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://ct543xioph45k" path="res://scenes/boat.tscn" id="2_0wfyh"]
+
+[node name="main" type="Node" unique_id=1120951722]
+
+[node name="Water" parent="." unique_id=1296930 instance=ExtResource("1_o5qli")]
+
+[node name="Boat" parent="." unique_id=1731436076 instance=ExtResource("2_0wfyh")]
