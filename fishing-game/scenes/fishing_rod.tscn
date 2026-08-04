@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://b21aqojl2tpfl"]
+
+[ext_resource type="Texture2D" uid="uid://dgddj47okemlp" path="res://assets/FishingRod_01.png" id="1_g433l"]
+[ext_resource type="Script" uid="uid://dioolnbnyt6vj" path="res://scripts/fishing_rod.gd" id="1_h4s14"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4s14"]
+atlas = ExtResource("1_g433l")
+region = Rect2(0, 51, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xn5j"]
+atlas = ExtResource("1_g433l")
+region = Rect2(56, 51, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_binnr"]
+atlas = ExtResource("1_g433l")
+region = Rect2(0, 0, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l55x"]
+atlas = ExtResource("1_g433l")
+region = Rect2(56, 0, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74esa"]
+atlas = ExtResource("1_g433l")
+region = Rect2(112, 0, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwwt6"]
+atlas = ExtResource("1_g433l")
+region = Rect2(112, 51, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nswio"]
+atlas = ExtResource("1_g433l")
+region = Rect2(0, 102, 56, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apkvc"]
+atlas = ExtResource("1_g433l")
+region = Rect2(56, 102, 56, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oglxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4s14")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xn5j")
+}],
+"loop": 1,
+"name": &"catch",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_binnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l55x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74esa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l55x")
+}],
+"loop": 1,
+"name": &"fishing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwwt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nswio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apkvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nswio")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[node name="FishingRod" type="Node2D" unique_id=1723170737]
+script = ExtResource("1_h4s14")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1744025852]
+sprite_frames = SubResource("SpriteFrames_oglxd")
+animation = &"catch"
+autoplay = "idle"
+frame_progress = 0.95624197
