@@ -21,6 +21,7 @@ repeat_size = Vector2(320, 360)
 autoscroll = Vector2(3, 15)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=82786750]
+modulate = Color(1, 1, 1, 0.69411767)
 texture = ExtResource("2_ewrsg")
 centered = false
 
@@ -30,5 +31,6 @@ repeat_size = Vector2(320, 360)
 autoscroll = Vector2(4, 17)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=313200647]
+modulate = Color(1, 1, 1, 0.7764706)
 texture = ExtResource("3_fiwy5")
 centered = false

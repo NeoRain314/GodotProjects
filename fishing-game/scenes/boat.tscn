@@ -1,12 +1,68 @@
 [gd_scene format=3 uid="uid://ct543xioph45k"]
 
 [ext_resource type="Texture2D" uid="uid://cjv04s3ken5ci" path="res://assets/Boat.png" id="1_0063d"]
+[ext_resource type="Script" uid="uid://bhss3f70d32te" path="res://scripts/boat.gd" id="1_lw6pk"]
+[ext_resource type="Texture2D" uid="uid://6b8b47m5u8re" path="res://assets/Boat_WaterAnimation.png" id="1_qyrje"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw6pk"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(0, 0, 142, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evv4r"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(142, 0, 142, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsggc"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(0, 142, 142, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt8vh"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(142, 142, 142, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo52m"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(0, 284, 142, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2jbu"]
+atlas = ExtResource("1_qyrje")
+region = Rect2(142, 284, 142, 142)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oglxd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw6pk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evv4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsggc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt8vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo52m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2jbu")
+}],
+"loop": 1,
+"name": &"splash",
+"speed": 5.0
+}]
 
 [node name="Boat" type="Node2D" unique_id=1731436076]
+script = ExtResource("1_lw6pk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1324833001]
+sprite_frames = SubResource("SpriteFrames_oglxd")
+animation = &"splash"
+autoplay = "splash"
+frame = 2
+frame_progress = 0.7159753
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=656878270]
 texture = ExtResource("1_0063d")
-centered = false
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1473490197]
-position = Vector2(160, 90)

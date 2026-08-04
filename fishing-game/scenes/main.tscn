@@ -8,3 +8,7 @@
 [node name="Water" parent="." unique_id=1296930 instance=ExtResource("1_o5qli")]
 
 [node name="Boat" parent="." unique_id=1731436076 instance=ExtResource("2_0wfyh")]
+position = Vector2(160, 110)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=380973925]
+position = Vector2(160, 90)
