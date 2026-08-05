@@ -27,10 +27,12 @@ func _process(delta: float) -> void:
 	
 	if randi() % 50 == 0 && counter == 1:
 		$splash.visible = true
-		$splash.play("default")
+		$splash.play("fishing")
+		$splash.position.x = start_position_x - 17
 	if counter == 2:
 		$splash.visible = true
-		$splash.play("default") #play different animation or match position!!!!
+		$splash.play("catch")
+		$splash.position.x = start_position_x - 26
 		$rod.position.x = start_position_x + sin(_time * shake_speed) * max_shake
 	
 	if !$splash.is_playing(): $splash.visible = false

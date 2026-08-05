@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dgddj47okemlp" path="res://assets/FishingRod_01.png" id="1_g433l"]
 [ext_resource type="Script" uid="uid://dioolnbnyt6vj" path="res://scripts/fishing_rod.gd" id="1_h4s14"]
 [ext_resource type="Texture2D" uid="uid://t3mj464fudxv" path="res://assets/small_splash.png" id="3_1xn5j"]
+[ext_resource type="Texture2D" uid="uid://dwuksw731qa2a" path="res://assets/splash_catch.png" id="3_binnr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xn5j"]
 atlas = ExtResource("1_g433l")
@@ -84,6 +85,26 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah5ia"]
+atlas = ExtResource("3_binnr")
+region = Rect2(0, 0, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1i7a"]
+atlas = ExtResource("3_binnr")
+region = Rect2(0, 11, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyviu"]
+atlas = ExtResource("3_binnr")
+region = Rect2(0, 22, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah4mo"]
+atlas = ExtResource("3_binnr")
+region = Rect2(0, 33, 14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7150"]
+atlas = ExtResource("3_binnr")
+region = Rect2(0, 44, 14, 11)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_eax16"]
 atlas = ExtResource("3_1xn5j")
 region = Rect2(0, 0, 19, 14)
@@ -104,6 +125,26 @@ region = Rect2(57, 0, 19, 14)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ah5ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1i7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyviu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah4mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7150")
+}],
+"loop": 1,
+"name": &"catch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_eax16")
 }, {
 "duration": 1.0,
@@ -116,7 +157,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ixrly")
 }],
 "loop": 0,
-"name": &"default",
+"name": &"fishing",
 "speed": 5.0
 }]
 
@@ -125,11 +166,10 @@ script = ExtResource("1_h4s14")
 
 [node name="rod" type="AnimatedSprite2D" parent="." unique_id=1744025852]
 sprite_frames = SubResource("SpriteFrames_oglxd")
-animation = &"idle"
+animation = &"catch"
 autoplay = "idle"
 
 [node name="splash" type="AnimatedSprite2D" parent="." unique_id=405241569]
-visible = false
-position = Vector2(-17, 20)
+position = Vector2(-24, 21)
 sprite_frames = SubResource("SpriteFrames_3mgmr")
-frame_progress = 0.8517347
+animation = &"catch"
