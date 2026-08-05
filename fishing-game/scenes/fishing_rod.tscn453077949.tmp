@@ -26,7 +26,7 @@ region = Rect2(112, 0, 56, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwwt6"]
 atlas = ExtResource("1_g433l")
-region = Rect2(56, 102, 56, 51)
+region = Rect2(112, 51, 56, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nswio"]
 atlas = ExtResource("1_g433l")
@@ -34,7 +34,7 @@ region = Rect2(0, 102, 56, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_apkvc"]
 atlas = ExtResource("1_g433l")
-region = Rect2(112, 51, 56, 51)
+region = Rect2(56, 102, 56, 51)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oglxd"]
 animations = [{
@@ -125,7 +125,7 @@ script = ExtResource("1_h4s14")
 
 [node name="rod" type="AnimatedSprite2D" parent="." unique_id=1744025852]
 sprite_frames = SubResource("SpriteFrames_oglxd")
-animation = &"idle"
+animation = &"catch"
 autoplay = "idle"
 
 [node name="splash" type="AnimatedSprite2D" parent="." unique_id=405241569]

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cjv04s3ken5ci" path="res://assets/Boat.png" id="1_0063d"]
 [ext_resource type="Script" uid="uid://bhss3f70d32te" path="res://scripts/boat.gd" id="1_lw6pk"]
 [ext_resource type="Texture2D" uid="uid://6b8b47m5u8re" path="res://assets/Boat_WaterAnimation.png" id="1_qyrje"]
+[ext_resource type="Texture2D" uid="uid://cd685dx027haa" path="res://assets/Boat_Shadow.png" id="2_evv4r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lw6pk"]
 atlas = ExtResource("1_qyrje")
@@ -57,6 +58,11 @@ animations = [{
 [node name="Boat" type="Node2D" unique_id=1731436076]
 script = ExtResource("1_lw6pk")
 
+[node name="shadow" type="Sprite2D" parent="." unique_id=1478534780]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(2, 0)
+texture = ExtResource("2_evv4r")
+
 [node name="splash" type="AnimatedSprite2D" parent="." unique_id=1324833001]
 sprite_frames = SubResource("SpriteFrames_oglxd")
 animation = &"splash"
@@ -64,5 +70,5 @@ autoplay = "splash"
 frame = 2
 frame_progress = 0.7159753
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=656878270]
+[node name="boat" type="Sprite2D" parent="." unique_id=656878270]
 texture = ExtResource("1_0063d")
