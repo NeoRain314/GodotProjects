@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c5744s7byhirb"]
+
+[ext_resource type="Script" uid="uid://l8pthwmjj646" path="res://scripts/main.gd" id="1_elqb8"]
+[ext_resource type="PackedScene" uid="uid://d2wa8rj0ch5xm" path="res://scenes/cursor.tscn" id="2_rvslj"]
+
+[node name="Main" type="Node" unique_id=86002062]
+script = ExtResource("1_elqb8")
+
+[node name="Cursor" parent="." unique_id=1608051777 instance=ExtResource("2_rvslj")]
+z_index = 4000

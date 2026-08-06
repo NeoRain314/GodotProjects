@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dioolnbnyt6vj" path="res://scripts/fishing_rod.gd" id="1_h4s14"]
 [ext_resource type="Texture2D" uid="uid://t3mj464fudxv" path="res://assets/small_splash.png" id="3_1xn5j"]
 [ext_resource type="Texture2D" uid="uid://dwuksw731qa2a" path="res://assets/splash_catch.png" id="3_binnr"]
-[ext_resource type="Texture2D" uid="uid://b7ivn6kjrrqur" path="res://assets/Fishes/fish_00.png" id="5_7l55x"]
+[ext_resource type="Texture2D" uid="uid://c0kxa7iwy1okb" path="res://assets/Fishes/fish_0.png" id="5_7l55x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1xn5j"]
 atlas = ExtResource("1_g433l")
@@ -13,10 +13,6 @@ region = Rect2(0, 51, 56, 51)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fxj8v"]
 atlas = ExtResource("1_g433l")
 region = Rect2(56, 51, 56, 51)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m72g8"]
-atlas = ExtResource("1_g433l")
-region = Rect2(0, 102, 56, 51)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_binnr"]
 atlas = ExtResource("1_g433l")
@@ -57,14 +53,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m72g8")
-}],
-"loop": 1,
-"name": &"fish",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_binnr")
 }, {
 "duration": 1.0,
@@ -97,9 +85,6 @@ animations = [{
 "name": &"idle",
 "speed": 3.0
 }]
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l5apr"]
-points = PackedVector2Array(30, 26, 21, 2, 0, -28, -3, -23, -1, -13, 14, 4, 23, 26)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah5ia"]
 atlas = ExtResource("3_binnr")
@@ -155,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j7150")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"catch",
 "speed": 5.0
 }, {
@@ -182,13 +167,8 @@ script = ExtResource("1_h4s14")
 
 [node name="rod" type="AnimatedSprite2D" parent="." unique_id=1744025852]
 sprite_frames = SubResource("SpriteFrames_oglxd")
-animation = &"fishing"
+animation = &"idle"
 autoplay = "idle"
-
-[node name="Area2D" type="Area2D" parent="rod" unique_id=1828922012]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="rod/Area2D" unique_id=621431162]
-shape = SubResource("ConvexPolygonShape2D_l5apr")
 
 [node name="splash" type="AnimatedSprite2D" parent="." unique_id=405241569]
 position = Vector2(-24, 21)
@@ -196,9 +176,8 @@ sprite_frames = SubResource("SpriteFrames_3mgmr")
 animation = &"catch"
 
 [node name="fish" type="Sprite2D" parent="." unique_id=1440918997]
-position = Vector2(-2, 18)
+position = Vector2(-3, 17)
 rotation = 1.5707964
 texture = ExtResource("5_7l55x")
+region_enabled = true
 region_rect = Rect2(0, 0, 18, 18)
-
-[connection signal="mouse_entered" from="rod/Area2D" to="." method="_on_mouse_entered"]

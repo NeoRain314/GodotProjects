@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d2wa8rj0ch5xm"]
+
+[ext_resource type="Script" uid="uid://c8w3bsu7mcu4q" path="res://scripts/cursor.gd" id="1_s0nli"]
+[ext_resource type="Texture2D" uid="uid://bi3ry1yjddqaq" path="res://assets/cursors/cursor_0.png" id="2_ndevg"]
+
+[node name="Cursor" type="Node2D" unique_id=1608051777]
+script = ExtResource("1_s0nli")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1598779316]
+texture = ExtResource("2_ndevg")
+
+[node name="Label" type="Label" parent="." unique_id=1543085109]
+offset_left = 2.0
+offset_top = -25.0
+offset_right = 32.0
+offset_bottom = -2.0
+text = "test"
