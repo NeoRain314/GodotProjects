@@ -6,6 +6,7 @@ var curr_cursor_text = ""
 #cursors
 var cursor_norm = load("res://assets/cursors/cursor_0.png")
 var cursor_select = load("res://assets/cursors/cursor_1.png")
+var cursor_click = load("res://assets/cursors/cursor_2.png")
 
 func _ready() -> void:
 	pass 

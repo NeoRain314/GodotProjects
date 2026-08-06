@@ -98,8 +98,9 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_l5apr"]
-points = PackedVector2Array(30, 26, 21, 2, 0, -28, -3, -23, -1, -13, 14, 4, 23, 26)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7l55x"]
+radius = 12.969305
+height = 69.76465
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ah5ia"]
 atlas = ExtResource("3_binnr")
@@ -182,13 +183,15 @@ script = ExtResource("1_h4s14")
 
 [node name="rod" type="AnimatedSprite2D" parent="." unique_id=1744025852]
 sprite_frames = SubResource("SpriteFrames_oglxd")
-animation = &"fishing"
+animation = &"fish"
 autoplay = "idle"
 
 [node name="Area2D" type="Area2D" parent="rod" unique_id=1828922012]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rod/Area2D" unique_id=621431162]
-shape = SubResource("ConvexPolygonShape2D_l5apr")
+position = Vector2(12.000001, 4.7683716e-07)
+rotation = -0.46352345
+shape = SubResource("CapsuleShape2D_7l55x")
 
 [node name="splash" type="AnimatedSprite2D" parent="." unique_id=405241569]
 position = Vector2(-24, 21)
@@ -201,4 +204,9 @@ rotation = 1.5707964
 texture = ExtResource("5_7l55x")
 region_rect = Rect2(0, 0, 18, 18)
 
+[node name="Timer" type="Timer" parent="." unique_id=1730503902]
+one_shot = true
+
 [connection signal="mouse_entered" from="rod/Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="rod/Area2D" to="." method="_on_mouse_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

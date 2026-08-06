@@ -9,5 +9,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position = get_viewport().get_mouse_position()
-	$Sprite2D.texture = GameManagerAl.curr_cursor_asset
+	if Input.is_action_pressed("mouse_click"):
+		$Sprite2D.texture = GameManagerAl.cursor_click		
+	else:
+		$Sprite2D.texture = GameManagerAl.curr_cursor_asset
 	$Label.text = GameManagerAl.curr_cursor_text
+	
+	
+		

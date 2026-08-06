@@ -14,6 +14,8 @@ var shake_speed: int = 20
 var max_shake: float = 0.5
 var start_position_x: float
 
+var mouse_touch: bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,16 +27,27 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_time += delta
 	
-	if Input.is_action_just_pressed("ui_left"):
-		#$rod.position.x = start_position_x
-		$fish.visible = false
-		stat += 1
-		stat = 3
-		if stat > 3: stat = 0
-		if stat == 0: idle() 
-		if stat == 1: fishing()
-		if stat == 2: catch()
+	#if clicked
+	if Input.is_action_just_pressed("mouse_click") && mouse_touch:
+		print("fishing rod")
+		
+		if stat == 0: #start fishing
+			stat += 1
+			fishing()
+			$Timer.start(randi_range(5, 10))
+			
+		if stat == 2: #catch fish
+			stat += 1
+			
 		if stat == 3: fish_caught()
+		
+		#$fish.visible = false
+		#stat += 1
+		#if stat > 3: stat = 0
+		#if stat == 0: idle() 
+		#if stat == 1: fishing()
+		#if stat == 2: catch()
+		#if stat == 3: fish_caught()
 	
 	if stat == 1 && randi() % 50 == 0:	
 		$splash.visible = true
@@ -71,4 +84,19 @@ func set_fish_texture(index: int):
 
 
 func _on_mouse_entered() -> void:
-	pass
+	if(stat == 0):
+		GameManagerAl.set_cursor(GameManagerAl.cursor_select, "use")
+		mouse_touch = true
+	if(stat == 2):
+		GameManagerAl.set_cursor(GameManagerAl.cursor_select, "catch")
+		mouse_touch = true
+
+
+func _on_mouse_exited() -> void:
+	GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
+	mouse_touch = false
+
+
+func _on_timer_timeout() -> void:
+	stat = 2 #fish bitten
+	catch()
