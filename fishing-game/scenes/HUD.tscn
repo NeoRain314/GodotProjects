@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cfgiegege4oqe"]
+
+[ext_resource type="Script" uid="uid://hjf0mco8lksl" path="res://scripts/hud.gd" id="1_qpvh6"]
+
+[node name="HUD" type="Node2D" unique_id=1561517978]
+script = ExtResource("1_qpvh6")
+
+[node name="TempInventory" type="Label" parent="." unique_id=1110752011]
+offset_left = 243.0
+offset_top = 1.0
+offset_right = 318.0
+offset_bottom = 24.0
+text = "inventory"
