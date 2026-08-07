@@ -1,5 +1,12 @@
 extends Node2D
 
+enum State {
+	IDLE,
+	FISHING,
+	FISH_ON_ROD,
+	FISH_CAUGHT
+}
+
 @export var fish_textures: Array[Texture2D] = [
 	preload("res://assets/Fishes/fish_00.png"),
 	preload("res://assets/Fishes/fish_01.png"),
@@ -8,95 +15,114 @@ extends Node2D
 	preload("res://assets/Fishes/fish_04.png"),
 ]
 
-var stat : int = 0
-var _time: float
 var shake_speed: int = 20
 var max_shake: float = 0.5
-var start_position_x: float
 
-var mouse_touch: bool = false
+var current_state: State = State.IDLE
+
+var _time: float
+var rod_start_position_x: float
+var is_mouse_hovering: bool = false
+
+@onready var rod = $rod
+@onready var splash = $splash
+@onready var fish = $fish
+@onready var timer = $Timer
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$splash.visible = false
-	$fish.visible = false
-	start_position_x = $rod.position.x
+	splash.visible = false
+	fish.visible = false
+	rod_start_position_x = rod.position.x
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+# ---- PROCESS -------------------------------------------------------------------------------------
 func _process(delta: float) -> void:
 	_time += delta
 	
-	#if clicked
-	if Input.is_action_just_pressed("mouse_click") && mouse_touch:
-		print("fishing rod")
-		
-		if stat == 0: #start fishing
-			stat += 1
-			fishing()
-			$Timer.start(randi_range(5, 10))
-			
-		if stat == 2: #catch fish
-			stat += 1
-			
-		if stat == 3: fish_caught()
-		
-		#$fish.visible = false
-		#stat += 1
-		#if stat > 3: stat = 0
-		#if stat == 0: idle() 
-		#if stat == 1: fishing()
-		#if stat == 2: catch()
-		#if stat == 3: fish_caught()
-	
-	if stat == 1 && randi() % 50 == 0:	
-		$splash.visible = true
-		$splash.play("fishing")
-		$splash.position.x = start_position_x - 17
-		
-	if stat == 2:
-		$splash.visible = true
-		$splash.play("catch")
-		$splash.position.x = start_position_x - 26
-		$rod.position.x = start_position_x + sin(_time * shake_speed) * max_shake
-	
 	if !$splash.is_playing(): $splash.visible = false
+	
+	if Input.is_action_just_pressed("mouse_click") && is_mouse_hovering:
+		match current_state:
+			State.IDLE:
+				start_fishing()
+			State.FISH_ON_ROD:
+				fish_caught()
+			State.FISH_CAUGHT:
+				collect_fish()
+				idle()
+	
+	match current_state:
+		State.FISHING:
+			if randi() % 50 == 0: play_splash("fishing", -17)
+		State.FISH_ON_ROD:
+			rod.position.x = rod_start_position_x + sin(_time * shake_speed) * max_shake
+			play_splash("catch", -26)
+
+
+# ---- STATE CONTROLLER ----------------------------------------------------------------------------
+func set_state(new_state: State):
+	current_state = new_state
 
 func idle():
-	$rod.play("idle")
+	set_state(State.IDLE)
+	rod.play("idle")
+	update_cursor()
 
-func fishing():
-	$rod.play("fishing")
+func start_fishing():
+	set_state(State.FISHING)
+	rod.play("fishing")
+	update_cursor()
+	timer.start(randi_range(5,10))
 
-func catch():
-	$rod.play("catch")
+func fish_on_rod():
+	set_state(State.FISH_ON_ROD)
+	rod.play("catch")
+	update_cursor()
 
 func fish_caught():
-	var fish_index: int = randi_range(0, fish_textures.size())
-	print(fish_index)
-	$rod.play("fish")
-	set_fish_texture(fish_index)
-	$fish.visible = true
+	set_state(State.FISH_CAUGHT)
+	rod.play("fish")
+	rod.position.x = rod_start_position_x
+	fish.texture = fish_textures.pick_random()
+	fish.visible = true
+	update_cursor()
 
-func set_fish_texture(index: int):
-	if index >= 0 && index < fish_textures.size():
-		$fish.texture = fish_textures[index]
+func collect_fish():
+	fish.visible = false
+	InventoryManagerAl.add_item("fish")
+
+# ---- HELPER FUNCTIONS ----------------------------------------------------------------------------
+func play_splash(animation: String, offset_x: float = 0):
+	splash.visible = true
+	splash.play(animation)
+	splash.position.x = rod_start_position_x + offset_x
+
+func update_cursor():
+	if is_mouse_hovering:
+		GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
+		match current_state:
+			State.IDLE:
+				GameManagerAl.set_cursor(GameManagerAl.cursor_select, "use")
+			State.FISH_ON_ROD:
+				GameManagerAl.set_cursor(GameManagerAl.cursor_select, "catch")
+			State.FISH_CAUGHT:
+				GameManagerAl.set_cursor(GameManagerAl.cursor_select, "collect")				
+	else:
+		GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
 
 
+# ---- SIGNALS -------------------------------------------------------------------------------------
 func _on_mouse_entered() -> void:
-	if(stat == 0):
-		GameManagerAl.set_cursor(GameManagerAl.cursor_select, "use")
-		mouse_touch = true
-	if(stat == 2):
-		GameManagerAl.set_cursor(GameManagerAl.cursor_select, "catch")
-		mouse_touch = true
+	is_mouse_hovering = true
+	update_cursor()
 
 
 func _on_mouse_exited() -> void:
-	GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
-	mouse_touch = false
-
+	is_mouse_hovering = false
+	update_cursor()
 
 func _on_timer_timeout() -> void:
-	stat = 2 #fish bitten
-	catch()
+	set_state(State.FISH_ON_ROD)
+	fish_on_rod()

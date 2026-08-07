@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	pass
 
 func update_inventory_ui():
-	var inv_text: String = ""
+	var inv_text: String = "Inventory: \n"
 	for item_name in InventoryManagerAl.contents:
-		inv_text += item_name + " " + str(InventoryManagerAl.contents[item_name]) + "\n"
+		inv_text += "- " + item_name + ": " + str(InventoryManagerAl.contents[item_name]) + "\n"
 	$TempInventory.text = inv_text
