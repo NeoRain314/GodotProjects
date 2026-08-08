@@ -14,9 +14,11 @@ enum State {
 	preload("res://assets/Fishes/fish_03.png"),
 	preload("res://assets/Fishes/fish_04.png"),
 ]
+var fish_default_prop: Dictionary = {}
 
 var shake_speed: int = 20
 var max_shake: float = 0.5
+var fishing_time = [0,0]
 
 var current_state: State = State.IDLE
 
@@ -28,13 +30,21 @@ var is_mouse_hovering: bool = false
 @onready var splash = $splash
 @onready var fish = $fish
 @onready var timer = $Timer
+@onready var collisionshape_fishing = $rod/Area2D/CollisionShape_fishing
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	splash.visible = false
 	fish.visible = false
+	fish_default_prop = {
+		"scale": fish.scale,
+		"modulate": fish.modulate,
+		"position": fish.position
+	}
+	
 	rod_start_position_x = rod.position.x
+	collisionshape_fishing.disabled = true
 
 
 # ---- PROCESS -------------------------------------------------------------------------------------
@@ -69,17 +79,20 @@ func idle():
 	set_state(State.IDLE)
 	rod.play("idle")
 	update_cursor()
+	collisionshape_fishing.disabled = true
 
 func start_fishing():
 	set_state(State.FISHING)
 	rod.play("fishing")
 	update_cursor()
-	timer.start(randi_range(5,10))
+	timer.start(randi_range(fishing_time[0],fishing_time[1]))
+	collisionshape_fishing.disabled = false
 
 func fish_on_rod():
 	set_state(State.FISH_ON_ROD)
 	rod.play("catch")
 	update_cursor()
+	collisionshape_fishing.disabled = false
 
 func fish_caught():
 	set_state(State.FISH_CAUGHT)
@@ -88,10 +101,24 @@ func fish_caught():
 	fish.texture = fish_textures.pick_random()
 	fish.visible = true
 	update_cursor()
+	collisionshape_fishing.disabled = true
 
 func collect_fish():
+	var tween_fish = fish.create_tween().set_parallel(true) 
+	tween_fish.tween_property(fish, "scale", Vector2(1.2,1.2), 0.3)
+	tween_fish.tween_property(fish, "modulate:a", 0.0, 0.3)
+	#tween_fish.tween_property(fish, "position:y", fish_default_prop["position"].y - 5, 0.3)
+	tween_fish.tween_property(fish, "global_position", Vector2(get_viewport_rect().size.x, 0), 2)
+	
+	await tween_fish.finished
+	for property in fish_default_prop:
+		fish.set(property, fish_default_prop[property])
 	fish.visible = false
+	
+	
 	InventoryManagerAl.add_item("fish")
+
+	
 
 # ---- HELPER FUNCTIONS ----------------------------------------------------------------------------
 func play_splash(animation: String, offset_x: float = 0):
