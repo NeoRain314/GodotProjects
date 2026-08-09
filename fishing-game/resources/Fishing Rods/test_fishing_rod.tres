@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="fishing_rod_resource" format=3 uid="uid://cdx1qqk2mo6qi"]
+
+[ext_resource type="Script" uid="uid://c0lenr6b5qrqd" path="res://resources/fishing_rod_resource.gd" id="1_y16fh"]
+
+[resource]
+script = ExtResource("1_y16fh")
+name = "Test Rod"
+catch_time = [5, 10]
+metadata/_custom_type_script = "uid://c0lenr6b5qrqd"

@@ -7,18 +7,19 @@ enum State {
 	FISH_CAUGHT
 }
 
-
+#fishes
 @export var fish_types: Array[fish_resource] = [
 	preload("res://resources/Fishes/test_fish.tres"),
 	preload("res://resources/Fishes/test_fish_2.tres")
 ]
 var curr_fish_type
-
 var fish_default_prop: Dictionary = {}
 
+#fishing rod
+var rod_type = preload("res://resources/Fishing Rods/test_fishing_rod.tres")
 var shake_speed: int = 20
 var max_shake: float = 0.5
-var fishing_time = [0,0]
+var fishing_time = rod_type.catch_time
 
 var current_state: State = State.IDLE
 
