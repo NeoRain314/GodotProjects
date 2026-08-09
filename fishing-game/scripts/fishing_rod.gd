@@ -8,23 +8,22 @@ enum State {
 }
 
 #fishes
-@export var fish_types: Array[fish_resource] = [
-	preload("res://resources/Fishes/test_fish.tres"),
-	preload("res://resources/Fishes/test_fish_2.tres")
+@export var catchable_item_ids: Array[String] = [
+	"fish_01",
+	"fish_02"
 ]
-var curr_fish_type
+var curr_fish_id
 var fish_default_prop: Dictionary = {}
 
 #fishing rod
-var rod_type = preload("res://resources/Fishing Rods/test_fishing_rod.tres")
+var rod_id = "test_rod"
 var shake_speed: int = 20
 var max_shake: float = 0.5
-var fishing_time = rod_type.catch_time
+var rod_start_position_x: float
+var fishing_time = ItemManagerAl.get_item(rod_id).catch_time
 
 var current_state: State = State.IDLE
-
 var _time: float
-var rod_start_position_x: float
 var is_mouse_hovering: bool = false
 
 @onready var rod = $rod
@@ -100,15 +99,15 @@ func fish_caught():
 	rod.play("fish")
 	rod.position.x = rod_start_position_x
 	
-	curr_fish_type = fish_types.pick_random()
-	fish.texture = curr_fish_type.texture
+	curr_fish_id = catchable_item_ids.pick_random()
+	fish.texture = ItemManagerAl.get_item(curr_fish_id).texture
 	fish.visible = true
 	
 	update_cursor()
 	collisionshape_fishing.disabled = true
 
 func collect_fish():
-	InventoryManagerAl.add_item(curr_fish_type.name)
+	InventoryManagerAl.add_item(ItemManagerAl.get_item(curr_fish_id).name)
 	var tween_fish = fish.create_tween().set_parallel(true) 
 	tween_fish.tween_property(fish, "scale", Vector2(1.2,1.2), 0.3)
 	tween_fish.tween_property(fish, "modulate:a", 0.0, 0.3)

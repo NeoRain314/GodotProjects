@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManagerAl="*uid://btl3mrrl7g7uw"
 InventoryManagerAl="*uid://c1eo4agsaf5hy"
+ItemManagerAl="*uid://m847d7ckvp4h"
 
 [display]
 

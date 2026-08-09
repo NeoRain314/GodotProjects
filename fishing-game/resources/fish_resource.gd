@@ -1,6 +1,4 @@
-extends Resource
-class_name fish_resource
+class_name FishData
+extends ItemData
 
-@export var texture: Texture2D
-@export var name: String
 @export var selling_price: int

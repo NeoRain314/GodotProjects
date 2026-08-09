@@ -1,6 +1,5 @@
-extends Resource
-class_name fishing_rod_resource
+class_name FishingRodData
+extends ItemData
 
-@export var name: String
 @export var price: int
 @export var catch_time: Array = [0, 0]
