@@ -29,6 +29,16 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://bi3ry1yjddqaq"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "purple",
+"res://fonts/": "purple",
+"res://resources/": "teal",
+"res://scenes/": "blue",
+"res://scripts/": "pink"
+}
+
 [input]
 
 mouse_click={

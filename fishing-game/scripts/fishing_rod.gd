@@ -7,13 +7,13 @@ enum State {
 	FISH_CAUGHT
 }
 
-@export var fish_textures: Array[Texture2D] = [
-	preload("res://assets/Fishes/fish_00.png"),
-	preload("res://assets/Fishes/fish_01.png"),
-	preload("res://assets/Fishes/fish_02.png"),
-	preload("res://assets/Fishes/fish_03.png"),
-	preload("res://assets/Fishes/fish_04.png"),
+
+@export var fish_types: Array[fish_resource] = [
+	preload("res://resources/Fishes/test_fish.tres"),
+	preload("res://resources/Fishes/test_fish_2.tres")
 ]
+var curr_fish_type
+
 var fish_default_prop: Dictionary = {}
 
 var shake_speed: int = 20
@@ -98,12 +98,16 @@ func fish_caught():
 	set_state(State.FISH_CAUGHT)
 	rod.play("fish")
 	rod.position.x = rod_start_position_x
-	fish.texture = fish_textures.pick_random()
+	
+	curr_fish_type = fish_types.pick_random()
+	fish.texture = curr_fish_type.texture
 	fish.visible = true
+	
 	update_cursor()
 	collisionshape_fishing.disabled = true
 
 func collect_fish():
+	InventoryManagerAl.add_item(curr_fish_type.name)
 	var tween_fish = fish.create_tween().set_parallel(true) 
 	tween_fish.tween_property(fish, "scale", Vector2(1.2,1.2), 0.3)
 	tween_fish.tween_property(fish, "modulate:a", 0.0, 0.3)
@@ -114,11 +118,7 @@ func collect_fish():
 	for property in fish_default_prop:
 		fish.set(property, fish_default_prop[property])
 	fish.visible = false
-	
-	
-	InventoryManagerAl.add_item("fish")
 
-	
 
 # ---- HELPER FUNCTIONS ----------------------------------------------------------------------------
 func play_splash(animation: String, offset_x: float = 0):

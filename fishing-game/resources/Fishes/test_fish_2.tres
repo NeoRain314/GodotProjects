@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="fish_resource" format=3 uid="uid://cho0aqajgmukh"]
+
+[ext_resource type="Script" uid="uid://dptw27lrwp5vj" path="res://resources/fish_resource.gd" id="1_pyu4a"]
+[ext_resource type="Texture2D" uid="uid://fj57sho6s8r" path="res://assets/fishes/fish_02.png" id="2_2qqd3"]
+
+[resource]
+script = ExtResource("1_pyu4a")
+texture = ExtResource("2_2qqd3")
+name = "Test Fish 2"
+selling_price = 3
+metadata/_custom_type_script = "uid://dptw27lrwp5vj"
