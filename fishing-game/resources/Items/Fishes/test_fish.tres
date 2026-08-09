@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_kyx1q")
 selling_price = 2
-id = "fish_01"
+id = "2"
 name = "LinaDoof"
 texture = ExtResource("2_a3t3a")
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

@@ -1,4 +1,7 @@
-extends Node
+extends Control
+
+@export var inv_row_scene: PackedScene
+@onready var container = $ScrollContainer/VBoxContainer
 
 
 func _ready() -> void:
@@ -8,8 +11,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+
 func update_inventory_ui():
-	var inv_text: String = "Inventory: \n"
+	for child in container.get_children():
+		child.queue_free()
 	for item_id in InventoryManagerAl.contents:
-		inv_text += "- " + item_id + ": " + str(InventoryManagerAl.contents[item_id]) + "\n"
-	$TempInventory.text = inv_text
+		var amount = InventoryManagerAl.contents[item_id]
+		
+		var row_instance = inv_row_scene.instantiate()
+		container.add_child(row_instance)
+		row_instance.setup(item_id, amount)
+
+# --- old ---
+#func update_inventory_ui():
+	#var inv_text: String = "Inventory: \n"
+	#for item_id in InventoryManagerAl.contents:
+		#inv_text += "- " + item_id + ": " + str(InventoryManagerAl.contents[item_id]) + "\n"
+	#$TempInventory.text = inv_text

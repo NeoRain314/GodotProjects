@@ -4,13 +4,6 @@ signal inventory_changed
 
 var contents = {}
 
-func _ready() -> void:
-	pass 
-
-
-func _process(delta: float) -> void:
-	pass
-
 func add_item(item_id: String, amount: int = 1):
 	if contents.has(item_id): contents[item_id] += amount	
 	else:contents[item_id] = amount

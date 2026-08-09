@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c8r52knttc0ur"]
+
+[ext_resource type="Script" uid="uid://fjtdskkolrde" path="res://scripts/inventory_row.gd" id="1_xrh21"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=437046974]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xrh21")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2100521091]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="." unique_id=954936389]
+layout_mode = 2
+
+[node name="AmountLabel" type="Label" parent="." unique_id=1793668684]
+layout_mode = 2

@@ -9,8 +9,7 @@ var cursor_select = load("res://assets/cursors/cursor_1.png")
 var cursor_click = load("res://assets/cursors/cursor_2.png")
 
 func _ready() -> void:
-	InventoryManagerAl.add_item("test", 3) #inv test
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

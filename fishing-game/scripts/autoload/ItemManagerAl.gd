@@ -13,7 +13,7 @@ func load_items_from_dir(path: String):
 		while file_name != "":
 			if dir.current_is_dir() && not file_name.begins_with("."):
 				load_items_from_dir(path + file_name + "/")
-			elif file_name.ends_with(".tres") || file_name.ends_with(".remap"):
+			elif file_name.ends_with(".tres") or file_name.ends_with(".remap"):
 				var resource_path = path + file_name.replace(".remap", "")
 				var item = load(resource_path) as ItemData
 				if item && item.id != "":

@@ -13,7 +13,6 @@ config_version=5
 config/name="FishingGame"
 run/main_scene="uid://c5744s7byhirb"
 config/features=PackedStringArray("4.7", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 

@@ -9,8 +9,8 @@ enum State {
 
 #fishes
 @export var catchable_item_ids: Array[String] = [
-	"fish_01",
-	"fish_02"
+	"1",
+	"2"
 ]
 var curr_fish_id
 var fish_default_prop: Dictionary = {}
@@ -107,7 +107,7 @@ func fish_caught():
 	collisionshape_fishing.disabled = true
 
 func collect_fish():
-	InventoryManagerAl.add_item(ItemManagerAl.get_item(curr_fish_id).name)
+	InventoryManagerAl.add_item(curr_fish_id)
 	var tween_fish = fish.create_tween().set_parallel(true) 
 	tween_fish.tween_property(fish, "scale", Vector2(1.2,1.2), 0.3)
 	tween_fish.tween_property(fish, "modulate:a", 0.0, 0.3)

@@ -1,10 +1,12 @@
 [gd_resource type="Resource" script_class="FishingRodData" format=3 uid="uid://cdx1qqk2mo6qi"]
 
 [ext_resource type="Script" uid="uid://c0lenr6b5qrqd" path="res://resources/fishing_rod_resource.gd" id="1_o5822"]
+[ext_resource type="Texture2D" uid="uid://c37fctk4qea7e" path="res://assets/Item Icons/FishingRod_01__ICON.png" id="2_gcrwl"]
 
 [resource]
 script = ExtResource("1_o5822")
-catch_time = [5, 10]
+catch_time = [1, 1]
 id = "test_rod"
 name = "Test Rod"
+texture = ExtResource("2_gcrwl")
 metadata/_custom_type_script = "uid://c0lenr6b5qrqd"
