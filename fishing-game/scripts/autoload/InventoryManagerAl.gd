@@ -5,8 +5,9 @@ signal inventory_changed
 var contents = {}
 
 func _ready() -> void:
-	add_item("1",2)
-	add_item("2",1)
+	#pass
+	#add_item("1",2)
+	#add_item("2",1)
 	add_item("test_rod",1)
 
 func add_item(item_id: String, amount: int = 1):

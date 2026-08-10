@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bx0cesltiqcad" path="res://assets/UI/ScrollBar.png" id="3_7hsmw"]
 [ext_resource type="Texture2D" uid="uid://c65are24p16io" path="res://assets/UI/Inventory_BoatTrip.png" id="4_7hsmw"]
 [ext_resource type="Texture2D" uid="uid://cl2hqflts5yhh" path="res://assets/UI/ScrollBar_hover.png" id="4_f6qnu"]
-[ext_resource type="Texture2D" uid="uid://s0d1ivg1huxo" path="res://assets/UI/ScrollBar_pressed.png" id="5_k4w17"]
 [ext_resource type="Texture2D" uid="uid://btyoxml5y1vkk" path="res://assets/UI/bar.png" id="6_k4w17"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4w17"]
@@ -34,7 +33,7 @@ texture_margin_right = 1.0
 texture_margin_bottom = 1.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twldb"]
-texture = ExtResource("5_k4w17")
+texture = ExtResource("4_f6qnu")
 texture_margin_left = 1.0
 texture_margin_top = 1.0
 texture_margin_right = 1.0
@@ -66,7 +65,7 @@ layout_mode = 0
 offset_left = 223.0
 offset_top = 2.0
 offset_right = 318.0
-offset_bottom = 62.0
+offset_bottom = 52.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_k4w17")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1672612666]
@@ -81,7 +80,6 @@ layout_mode = 2
 theme = SubResource("Theme_3mgmr")
 scroll_vertical_custom_step = 4.0
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer" unique_id=379477520]
 layout_mode = 2
