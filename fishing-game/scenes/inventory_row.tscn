@@ -1,17 +1,44 @@
 [gd_scene format=3 uid="uid://c8r52knttc0ur"]
 
 [ext_resource type="Script" uid="uid://fjtdskkolrde" path="res://scripts/inventory_row.gd" id="1_xrh21"]
+[ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="2_1krog"]
 
-[node name="HBoxContainer" type="HBoxContainer" unique_id=437046974]
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjhab"]
+
+[node name="HBoxContainer" type="PanelContainer" unique_id=1780145836]
+offset_right = 102.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cjhab")
 script = ExtResource("1_xrh21")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2100521091]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=31647397]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="." unique_id=954936389]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=2100521091]
+custom_minimum_size = Vector2(16, 16)
+custom_maximum_size = Vector2(16, 16)
 layout_mode = 2
+expand_mode = 1
+stretch_mode = 3
 
-[node name="AmountLabel" type="Label" parent="." unique_id=1793668684]
+[node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=954936389]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.7017464, 0.49265295, 0.24833831, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("2_1krog")
+theme_override_font_sizes/font_size = 6
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=1578941581]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer" unique_id=1793668684]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("2_1krog")
+theme_override_font_sizes/font_size = 6
+vertical_alignment = 1
