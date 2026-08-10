@@ -2,18 +2,56 @@
 
 [ext_resource type="Script" uid="uid://hjf0mco8lksl" path="res://scripts/hud.gd" id="1_qpvh6"]
 [ext_resource type="PackedScene" uid="uid://c8r52knttc0ur" path="res://scenes/inventory_row.tscn" id="2_1etfg"]
+[ext_resource type="Texture2D" uid="uid://bx0cesltiqcad" path="res://assets/UI/ScrollBar.png" id="3_7hsmw"]
 [ext_resource type="Texture2D" uid="uid://c65are24p16io" path="res://assets/UI/Inventory_BoatTrip.png" id="4_7hsmw"]
+[ext_resource type="Texture2D" uid="uid://cl2hqflts5yhh" path="res://assets/UI/ScrollBar_hover.png" id="4_f6qnu"]
+[ext_resource type="Texture2D" uid="uid://s0d1ivg1huxo" path="res://assets/UI/ScrollBar_pressed.png" id="5_k4w17"]
+[ext_resource type="Texture2D" uid="uid://btyoxml5y1vkk" path="res://assets/UI/bar.png" id="6_k4w17"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1krog"]
-content_margin_left = 7.0
-content_margin_top = 7.0
-content_margin_right = 7.0
-content_margin_bottom = 7.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4w17"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
 texture = ExtResource("4_7hsmw")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3mbq"]
+texture = ExtResource("3_7hsmw")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hsmw"]
+texture = ExtResource("4_f6qnu")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twldb"]
+texture = ExtResource("5_k4w17")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cuoo"]
+texture = ExtResource("6_k4w17")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_3mgmr"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_k3mbq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_7hsmw")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_twldb")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_8cuoo")
 
 [node name="HUD" type="Control" unique_id=472443716]
 layout_mode = 3
@@ -21,13 +59,29 @@ anchors_preset = 0
 script = ExtResource("1_qpvh6")
 inv_row_scene = ExtResource("2_1etfg")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1284781771]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=165426771]
+custom_minimum_size = Vector2(95, 60)
+custom_maximum_size = Vector2(95, 60)
 layout_mode = 0
-offset_left = 226.0
-offset_top = 3.0
-offset_right = 317.0
-offset_bottom = 102.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_1krog")
+offset_left = 223.0
+offset_top = 2.0
+offset_right = 318.0
+offset_bottom = 62.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_k4w17")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=379477520]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1672612666]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer" unique_id=1284781771]
+layout_mode = 2
+theme = SubResource("Theme_3mgmr")
+scroll_vertical_custom_step = 4.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer" unique_id=379477520]
 layout_mode = 2

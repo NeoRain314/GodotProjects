@@ -1,7 +1,7 @@
 extends Control
 
 @export var inv_row_scene: PackedScene
-@onready var container = $ScrollContainer/VBoxContainer
+@onready var container = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer
 
 
 func _ready() -> void:
