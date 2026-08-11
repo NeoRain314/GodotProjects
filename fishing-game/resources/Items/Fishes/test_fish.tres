@@ -9,4 +9,5 @@ selling_price = 2
 id = "2"
 name = "LinaDoof"
 texture = ExtResource("2_a3t3a")
+tags = 1
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

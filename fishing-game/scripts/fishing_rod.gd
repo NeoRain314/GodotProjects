@@ -8,10 +8,6 @@ enum State {
 }
 
 #fishes
-@export var catchable_item_ids: Array[String] = [
-	"1",
-	"2"
-]
 var curr_fish_id
 var fish_default_prop: Dictionary = {}
 
@@ -99,7 +95,7 @@ func fish_caught():
 	rod.play("fish")
 	rod.position.x = rod_start_position_x
 	
-	curr_fish_id = catchable_item_ids.pick_random()
+	curr_fish_id = ItemManagerAl.rod_catchable_items.pick_random()
 	fish.texture = ItemManagerAl.get_item(curr_fish_id).texture
 	fish.visible = true
 	
