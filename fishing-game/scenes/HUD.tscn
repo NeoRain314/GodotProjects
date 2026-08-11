@@ -103,6 +103,7 @@ offset_left = 7.0
 offset_top = 3.0
 offset_right = 82.0
 offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
 theme_override_fonts/font = ExtResource("9_8cuoo")
 theme_override_font_sizes/font_size = 4
 text = "inventory"

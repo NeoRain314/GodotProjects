@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d2wa8rj0ch5xm"]
 
 [ext_resource type="Script" uid="uid://c8w3bsu7mcu4q" path="res://scripts/cursor.gd" id="1_s0nli"]
-[ext_resource type="Texture2D" uid="uid://bi3ry1yjddqaq" path="res://assets/cursors/cursor_0.png" id="2_ndevg"]
+[ext_resource type="Texture2D" uid="uid://bi3ry1yjddqaq" path="res://assets/UI/cursors/cursor_0.png" id="2_ndevg"]
 [ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="3_ndevg"]
 
 [node name="Cursor" type="Node2D" unique_id=1608051777]
@@ -10,12 +10,13 @@ script = ExtResource("1_s0nli")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1598779316]
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_ndevg")
+centered = false
 
 [node name="Label" type="Label" parent="." unique_id=1543085109]
-offset_left = 2.0
-offset_top = -12.0
-offset_right = 32.0
-offset_bottom = 11.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 38.0
+offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("3_ndevg")
 theme_override_font_sizes/font_size = 7
 text = "test"
