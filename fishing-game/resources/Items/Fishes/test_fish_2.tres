@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_o6hhu")
 selling_price = 3
+weight = 100.0
 id = "1"
 name = "Test Fish 2"
 texture = ExtResource("2_dmgpv")

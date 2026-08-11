@@ -95,7 +95,7 @@ func fish_caught():
 	rod.play("fish")
 	rod.position.x = rod_start_position_x
 	
-	curr_fish_id = ItemManagerAl.rod_catchable_items.pick_random()
+	curr_fish_id = pick_random_fish()
 	fish.texture = ItemManagerAl.get_item(curr_fish_id).texture
 	fish.visible = true
 	
@@ -135,6 +135,15 @@ func update_cursor():
 	else:
 		GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
 
+func pick_random_fish():
+	if ItemManagerAl.rod_catchable_items.is_empty(): return null
+	var total_weight:float = 0.0
+	for fish_id in ItemManagerAl.rod_catchable_items:
+		total_weight += ItemManagerAl.get_item(fish_id).weight
+	var i: float = randf_range(0.0, total_weight)
+	for fish_id in ItemManagerAl.rod_catchable_items:
+		i -= ItemManagerAl.get_item(fish_id).weight
+		if i <= 0.0: return fish_id
 
 # ---- SIGNALS -------------------------------------------------------------------------------------
 func _on_mouse_entered() -> void:
