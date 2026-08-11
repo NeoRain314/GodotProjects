@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://doodhyny7bqo" path="res://scenes/water.tscn" id="1_t6ac7"]
 [ext_resource type="PackedScene" uid="uid://ct543xioph45k" path="res://scenes/boat.tscn" id="2_x5psi"]
 [ext_resource type="PackedScene" uid="uid://b21aqojl2tpfl" path="res://scenes/fishing_rod.tscn" id="3_0wk76"]
+[ext_resource type="PackedScene" uid="uid://c3xp4cvtvi4vk" path="res://scenes/fishing_net.tscn" id="4_x5psi"]
 
 [node name="BoatTrip" type="Node" unique_id=1120951722]
 
@@ -13,6 +14,9 @@ position = Vector2(160, 110)
 
 [node name="FishingRod" parent="Boat" unique_id=1723170737 instance=ExtResource("3_0wk76")]
 position = Vector2(-52, -39)
+
+[node name="FishingNet" parent="Boat" unique_id=584686822 instance=ExtResource("4_x5psi")]
+position = Vector2(-5, -36)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=380973925]
 position = Vector2(160, 90)
