@@ -7,6 +7,6 @@ extends PanelContainer
 func setup(item_id: String, amount: int):
 	var item = ItemManagerAl.get_item(item_id)
 	if item == null: push_warning("Item not fouond: " + item_id)
-	item_icon.texture = item.texture
+	item_icon.texture = item.icon_texture
 	item_name.text = item.name
 	item_amount.text = "x" + str(amount)

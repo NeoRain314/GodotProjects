@@ -4,6 +4,7 @@ extends Resource
 @export var id: String = ""
 @export var name: String
 @export var texture: Texture2D
+@export var icon_texture: Texture2D
 
 @export_flags("Rod Catchable:1", "Net Catchable:2", "Sellable:4") var tags: int = 0
 

@@ -8,5 +8,5 @@ script = ExtResource("1_o5822")
 catch_time = [1, 1]
 id = "test_rod"
 name = "Test Rod"
-texture = ExtResource("2_gcrwl")
+icon_texture = ExtResource("2_gcrwl")
 metadata/_custom_type_script = "uid://c0lenr6b5qrqd"

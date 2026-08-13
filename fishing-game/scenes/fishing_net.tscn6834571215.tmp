@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c3xp4cvtvi4vk"]
+
+[ext_resource type="Texture2D" uid="uid://bi5v7r0ix8grc" path="res://assets/fishing_net_idle.png" id="1_qhhy0"]
+[ext_resource type="Script" uid="uid://dcgb2wxpk6j2b" path="res://scripts/fishing_net.gd" id="1_yyfa5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwmtf"]
+atlas = ExtResource("1_qhhy0")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qksl4"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"catch",
+"speed": 4.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fish",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"fishing",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwmtf")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oglxd"]
+radius = 13.889487
+height = 37.686577
+
+[node name="FishingNet" type="Node2D" unique_id=584686822]
+script = ExtResource("1_yyfa5")
+
+[node name="net" type="AnimatedSprite2D" parent="." unique_id=1758825116]
+sprite_frames = SubResource("SpriteFrames_qksl4")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="net" unique_id=2095496747]
+
+[node name="CollisionShape_fishing" type="CollisionShape2D" parent="net/Area2D" unique_id=2111357599]
+position = Vector2(1.0000004, 1)
+rotation = 0.5074532
+shape = SubResource("CapsuleShape2D_oglxd")
+
+[node name="Timer" type="Timer" parent="." unique_id=1286252518]
+one_shot = true

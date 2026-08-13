@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishingNetData" format=3 uid="uid://c7fi00au6rsj2"]
+
+[ext_resource type="Script" uid="uid://dy1maa75reqgx" path="res://resources/fishing_net_resource.gd" id="1_7x66i"]
+
+[resource]
+script = ExtResource("1_7x66i")
+catch_time = [1, 2]
+id = "test_net"
+name = "Test Fishing Net"
+metadata/_custom_type_script = "uid://dy1maa75reqgx"
