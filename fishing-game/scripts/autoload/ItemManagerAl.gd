@@ -7,6 +7,8 @@ var net_catchable_items: Array = []
 
 func _ready() -> void:
 	load_items_from_dir("res://resources/Items/")
+	if rod_catchable_items.is_empty(): push_warning("Rod Catchable Items emoty")
+	if net_catchable_items.is_empty(): push_warning("Net Catchable Items emoty")
 
 func load_items_from_dir(path: String):
 	var dir = DirAccess.open(path)

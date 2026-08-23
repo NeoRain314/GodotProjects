@@ -95,7 +95,12 @@ func fish_caught():
 	rod.play("fish")
 	rod.position.x = rod_start_position_x
 	
+	if ItemManagerAl.rod_catchable_items.is_empty():
+		push_error("No catchable rod items available in ItemManager!")
+		return
+		
 	curr_fish_id = pick_random_fish()
+	print(curr_fish_id)
 	fish.texture = ItemManagerAl.get_item(curr_fish_id).texture
 	fish.visible = true
 	

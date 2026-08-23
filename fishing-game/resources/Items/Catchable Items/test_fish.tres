@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="FishData" format=3 uid="uid://dadbvfsvt64bi"]
 
+[ext_resource type="Texture2D" uid="uid://ocxn6j7wtoha" path="res://assets/Items/fishes/fish_03.png" id="1_24lur"]
 [ext_resource type="Script" uid="uid://dptw27lrwp5vj" path="res://resources/fish_resource.gd" id="1_kyx1q"]
-[ext_resource type="Texture2D" uid="uid://b7ivn6kjrrqur" path="res://assets/fishes/fish_00.png" id="2_a3t3a"]
 
 [resource]
 script = ExtResource("1_kyx1q")
 selling_price = 2
-weight = 100.0
 id = "2"
 name = "LinaDoof"
-texture = ExtResource("2_a3t3a")
-icon_texture = ExtResource("2_a3t3a")
+texture = ExtResource("1_24lur")
+icon_texture = ExtResource("1_24lur")
+weight = 100.0
 tags = 3
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

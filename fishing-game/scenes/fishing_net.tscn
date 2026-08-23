@@ -132,7 +132,7 @@ one_shot = true
 
 [node name="ItemContainer" type="Node2D" parent="." unique_id=1712488316]
 
-[connection signal="mouse_entered" from="net/Area2D" to="." method="_o_mouse_entered"]
 [connection signal="mouse_entered" from="net/Area2D" to="." method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="net/Area2D" to="." method="_o_mouse_entered"]
 [connection signal="mouse_exited" from="net/Area2D" to="." method="_on_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

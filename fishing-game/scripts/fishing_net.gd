@@ -101,6 +101,10 @@ func item_caught():
 	collisionshape_fishing.disabled = true
 	collisionshape_idel.disabled = false
 	
+	if ItemManagerAl.net_catchable_items.is_empty():
+		push_error("No catchable net items available in ItemManager!")
+		return
+	
 	catched_item_ids.clear()
 	var item_count = randi_range(1, catch_slots)
 	for i in item_count:

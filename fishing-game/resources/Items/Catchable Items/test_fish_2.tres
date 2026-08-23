@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="FishData" format=3 uid="uid://cho0aqajgmukh"]
 
+[ext_resource type="Texture2D" uid="uid://3wtcjrtnkx0o" path="res://assets/Items/fishes/fish_04.png" id="1_dpaw2"]
 [ext_resource type="Script" uid="uid://dptw27lrwp5vj" path="res://resources/fish_resource.gd" id="1_o6hhu"]
-[ext_resource type="Texture2D" uid="uid://fj57sho6s8r" path="res://assets/fishes/fish_02.png" id="2_dmgpv"]
 
 [resource]
 script = ExtResource("1_o6hhu")
 selling_price = 3
-weight = 100.0
 id = "1"
-name = "Test Fish 2"
-texture = ExtResource("2_dmgpv")
+name = "Mittelfinger"
+texture = ExtResource("1_dpaw2")
+icon_texture = ExtResource("1_dpaw2")
+weight = 100.0
 tags = 3
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"
