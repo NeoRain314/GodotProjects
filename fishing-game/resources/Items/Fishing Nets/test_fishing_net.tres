@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7x66i")
 catch_time = [1, 2]
+catch_slots = 3
 id = "test_net"
 name = "Test Fishing Net"
 metadata/_custom_type_script = "uid://dy1maa75reqgx"

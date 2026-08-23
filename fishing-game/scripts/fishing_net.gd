@@ -18,6 +18,7 @@ var max_shake: float = 0.5
 var net_idle_pos: Vector2 = Vector2(0.0, 0.0) #global start pos has to be -7|-53!!!  #TEMPORARY!!! (need better solution! :D)
 var net_fishing_pos: Vector2 = Vector2(69.0, 31.0)
 var fishing_time = ItemManagerAl.get_item(net_id).catch_time
+var catch_slots = ItemManagerAl.get_item(net_id).catch_slots
 
 var current_state: State = State.IDLE
 var _time: float
@@ -27,6 +28,7 @@ var is_mouse_hovering: bool = false
 @onready var timer = $Timer
 @onready var collisionshape_idel = $net/Area2D/CollisionShape_idel
 @onready var collisionshape_fishing = $net/Area2D/CollisionShape_fishing
+@onready var item_container = $ItemContainer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,7 +54,7 @@ func _process(delta: float) -> void:
 		State.FISHING:
 			if randi() % 50 == 0: play_splash("fishing", -17)
 		State.ITEM_IN_NET:
-			play_splash("catch", -26)
+			net.position.x = net_fishing_pos.x + sin(_time * shake_speed) * max_shake
 
 
 # ---- STATE CONTROLLER ----------------------------------------------------------------------------
@@ -96,21 +98,32 @@ func item_caught():
 	collisionshape_idel.disabled = false
 	
 	catched_item_ids.clear()
-	var item_count = randi_range(1, 3)
+	var item_count = randi_range(1, catch_slots)
 	for i in item_count:
 		catched_item_ids.append(pick_random_item())
 	
 	#show items
-	var item_pos_x = 0
+	var item_pos = Vector2i(-2,5)
 	for item_id in catched_item_ids:
 		var item = Sprite2D.new()
 		item.texture = ItemManagerAl.get_item(item_id).texture
-		item.position.x = item_pos_x
-		item_pos_x += 10
-		add_child(item)
+		item.position = item_pos
+		item.set_meta("id", item_id)
+		item_pos.x += 2
+		item_pos.y -= 5
+		item_container.add_child(item)
 
 func collect_items():
-	InventoryManagerAl.add_item("2")
+	for item in item_container.get_children():
+		InventoryManagerAl.add_item(item.get_meta("id"))
+		var tween_item = item.create_tween().set_parallel(true) 
+		tween_item.tween_property(item, "scale", Vector2(1.2,1.2), 0.3)
+		tween_item.tween_property(item, "modulate:a", 0.0, 0.3)
+		#tween_fish.tween_property(fish, "position:y", fish_default_prop["position"].y - 5, 0.3)
+		tween_item.tween_property(item, "global_position", Vector2(get_viewport_rect().size.x, 0), 2)
+		
+		tween_item.chain().tween_callback(item.queue_free)
+		
 	print("collected")
 
 
