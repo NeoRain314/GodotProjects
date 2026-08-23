@@ -14,8 +14,8 @@ var catched_items = []
 var net_id = "test_net"
 var shake_speed: int = 20
 var max_shake: float = 0.5
-var net_idle_pos: Vector2i = Vector2i(-8.0, -34.0)
-var net_fishing_pos: Vector2i = Vector2i(58.0, -14.0)
+var net_idle_pos: Vector2 = Vector2(0.0, 0.0) #global start pos has to be -7|-53!!!
+var net_fishing_pos: Vector2 = Vector2(69.0, 31.0)
 var fishing_time = ItemManagerAl.get_item(net_id).catch_time
 
 var current_state: State = State.IDLE
@@ -24,11 +24,13 @@ var is_mouse_hovering: bool = false
 
 @onready var net = $net
 @onready var timer = $Timer
+@onready var collisionshape_idel = $net/Area2D/CollisionShape_idel
+@onready var collisionshape_fishing = $net/Area2D/CollisionShape_fishing
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	idle();
 
 
 # ---- PROCESS -------------------------------------------------------------------------------------
@@ -62,6 +64,8 @@ func idle():
 	print("idle")
 	net.play("idle")
 	net.position = net_idle_pos
+	collisionshape_fishing.disabled = true
+	collisionshape_idel.disabled = false
 
 func start_fishing():
 	set_state(State.FISHING)
@@ -70,12 +74,16 @@ func start_fishing():
 	print("start fishing")
 	net.play("fishing")
 	net.position = net_fishing_pos
+	collisionshape_fishing.disabled = false
+	collisionshape_idel.disabled = true
 
 func fish_on_rod():
 	set_state(State.ITEM_IN_NET)
 	update_cursor()
 	print("fish in net")
 	net.position = net_fishing_pos
+	collisionshape_fishing.disabled = false
+	collisionshape_idel.disabled = true
 
 func fish_caught():
 	set_state(State.ITEM_CAUGHT)
@@ -84,6 +92,8 @@ func fish_caught():
 	update_cursor()
 	net.play("idle")
 	net.position = net_idle_pos
+	collisionshape_fishing.disabled = true
+	collisionshape_idel.disabled = false
 
 func collect_fish():
 	InventoryManagerAl.add_item("2")

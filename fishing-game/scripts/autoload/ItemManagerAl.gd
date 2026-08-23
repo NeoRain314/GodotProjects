@@ -3,6 +3,7 @@ extends Node
 var items: Dictionary = {}
 
 var rod_catchable_items: Array = []
+var net_catchable_items: Array = []
 
 func _ready() -> void:
 	load_items_from_dir("res://resources/Items/")
@@ -21,6 +22,7 @@ func load_items_from_dir(path: String):
 				if item && item.id != "":
 					items[item.id] = item
 					if(item.can_be_catched_by_rod()): rod_catchable_items.append(item.id)
+					if(item.can_be_catched_by_net()): net_catchable_items.append(item.id) ############################
 					print(item.id)
 			file_name = dir.get_next()
 
