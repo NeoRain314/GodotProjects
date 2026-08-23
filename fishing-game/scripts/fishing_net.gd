@@ -26,6 +26,7 @@ var is_mouse_hovering: bool = false
 
 @onready var net = $net
 @onready var timer = $Timer
+@onready var splash = $net/splash
 @onready var collisionshape_idel = $net/Area2D/CollisionShape_idel
 @onready var collisionshape_fishing = $net/Area2D/CollisionShape_fishing
 @onready var item_container = $ItemContainer
@@ -52,9 +53,10 @@ func _process(delta: float) -> void:
 	
 	match current_state:
 		State.FISHING:
-			if randi() % 50 == 0: play_splash("fishing", -17)
+			if randi() % 50 == 0: play_splash("fishing")
 		State.ITEM_IN_NET:
 			net.position.x = net_fishing_pos.x + sin(_time * shake_speed) * max_shake
+			if randi() % 10 == 0: play_splash("fishing")
 
 
 # ---- STATE CONTROLLER ----------------------------------------------------------------------------
@@ -62,6 +64,7 @@ func set_state(new_state: State):
 	current_state = new_state
 
 func idle():
+	splash.visible = false
 	set_state(State.IDLE)
 	update_cursor()
 	print("idle")
@@ -89,10 +92,11 @@ func item_in_net():
 	collisionshape_idel.disabled = true
 
 func item_caught():
+	splash.visible = false
 	set_state(State.ITEM_CAUGHT)
 	print("fish caught")
 	update_cursor()
-	net.play("idle")
+	net.play("catched")
 	net.position = net_idle_pos
 	collisionshape_fishing.disabled = true
 	collisionshape_idel.disabled = false
@@ -128,8 +132,9 @@ func collect_items():
 
 
 # ---- HELPER FUNCTIONS ----------------------------------------------------------------------------
-func play_splash(animation: String, offset_x: float = 0):
-	pass
+func play_splash(animation: String):
+	splash.visible = true
+	splash.play(animation)
 
 func update_cursor():
 	if is_mouse_hovering:
