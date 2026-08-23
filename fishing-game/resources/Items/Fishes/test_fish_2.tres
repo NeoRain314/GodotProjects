@@ -10,5 +10,5 @@ weight = 100.0
 id = "1"
 name = "Test Fish 2"
 texture = ExtResource("2_dmgpv")
-tags = 1
+tags = 3
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

@@ -11,5 +11,5 @@ id = "2"
 name = "LinaDoof"
 texture = ExtResource("2_a3t3a")
 icon_texture = ExtResource("2_a3t3a")
-tags = 1
+tags = 3
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

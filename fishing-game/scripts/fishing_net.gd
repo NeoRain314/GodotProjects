@@ -8,13 +8,14 @@ enum State {
 }
 
 #fishes
-var catched_items = []
+var catched_item_ids = []
+
 
 #fishing net
 var net_id = "test_net"
 var shake_speed: int = 20
 var max_shake: float = 0.5
-var net_idle_pos: Vector2 = Vector2(0.0, 0.0) #global start pos has to be -7|-53!!!
+var net_idle_pos: Vector2 = Vector2(0.0, 0.0) #global start pos has to be -7|-53!!!  #TEMPORARY!!! (need better solution! :D)
 var net_fishing_pos: Vector2 = Vector2(69.0, 31.0)
 var fishing_time = ItemManagerAl.get_item(net_id).catch_time
 
@@ -42,9 +43,9 @@ func _process(delta: float) -> void:
 			State.IDLE:
 				start_fishing()
 			State.ITEM_IN_NET:
-				fish_caught()
+				item_caught()
 			State.ITEM_CAUGHT:
-				collect_fish()
+				collect_items()
 				idle()
 	
 	match current_state:
@@ -77,7 +78,7 @@ func start_fishing():
 	collisionshape_fishing.disabled = false
 	collisionshape_idel.disabled = true
 
-func fish_on_rod():
+func item_in_net():
 	set_state(State.ITEM_IN_NET)
 	update_cursor()
 	print("fish in net")
@@ -85,17 +86,30 @@ func fish_on_rod():
 	collisionshape_fishing.disabled = false
 	collisionshape_idel.disabled = true
 
-func fish_caught():
+func item_caught():
 	set_state(State.ITEM_CAUGHT)
 	print("fish caught")
-	
 	update_cursor()
 	net.play("idle")
 	net.position = net_idle_pos
 	collisionshape_fishing.disabled = true
 	collisionshape_idel.disabled = false
+	
+	catched_item_ids.clear()
+	var item_count = randi_range(1, 3)
+	for i in item_count:
+		catched_item_ids.append(pick_random_item())
+	
+	#show items
+	var item_pos_x = 0
+	for item_id in catched_item_ids:
+		var item = Sprite2D.new()
+		item.texture = ItemManagerAl.get_item(item_id).texture
+		item.position.x = item_pos_x
+		item_pos_x += 10
+		add_child(item)
 
-func collect_fish():
+func collect_items():
 	InventoryManagerAl.add_item("2")
 	print("collected")
 
@@ -117,15 +131,15 @@ func update_cursor():
 	else:
 		GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
 
-func pick_random_fish():
-	if ItemManagerAl.rod_catchable_items.is_empty(): return null
-	var total_weight:float = 0.0
-	for fish_id in ItemManagerAl.rod_catchable_items:
-		total_weight += ItemManagerAl.get_item(fish_id).weight
+func pick_random_item():
+	if ItemManagerAl.net_catchable_items.is_empty(): return null
+	var total_weight: float = 0.0
+	for item_id in ItemManagerAl.net_catchable_items:
+		total_weight += ItemManagerAl.get_item(item_id).weight
 	var i: float = randf_range(0.0, total_weight)
-	for fish_id in ItemManagerAl.rod_catchable_items:
-		i -= ItemManagerAl.get_item(fish_id).weight
-		if i <= 0.0: return fish_id
+	for item_id in ItemManagerAl.net_catchable_items:
+		i -= ItemManagerAl.get_item(item_id).weight
+		if i <= 0.0: return item_id
 
 # ---- SIGNALS -------------------------------------------------------------------------------------
 func _on_mouse_entered() -> void:
@@ -138,4 +152,4 @@ func _on_mouse_exited() -> void:
 
 func _on_timer_timeout() -> void:
 	set_state(State.ITEM_CAUGHT)
-	fish_on_rod()
+	item_in_net()
