@@ -1,8 +1,9 @@
 extends Control
 
 @export var shop_row_scene: PackedScene
-@onready var shop_container = $TextureRect/MarginContainer/ScrollContainer/VBoxContainer
+@onready var shop_container = $ScrollContainer/VBoxContainer
 
+@export var shop_bg_texture: Texture2D
 
 func _ready() -> void:
 	ShopManagerAl.shop_changed.connect(update_shop_ui)
@@ -21,4 +22,4 @@ func update_shop_ui():
 		
 		var row_instance = shop_row_scene.instantiate()
 		shop_container.add_child(row_instance)
-		row_instance.setup(item_id, amount)
+		row_instance.setup(item_id, amount, 1)

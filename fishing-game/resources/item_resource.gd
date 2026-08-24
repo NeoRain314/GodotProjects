@@ -6,6 +6,7 @@ extends Resource
 @export var texture: Texture2D
 @export var icon_texture: Texture2D
 @export var weight : float
+@export var selling_price: int
 
 @export_flags("Rod Catchable:1", "Net Catchable:2", "Sellable:4") var tags: int = 0
 
