@@ -2,13 +2,9 @@
 
 [ext_resource type="Script" uid="uid://l8pthwmjj646" path="res://scripts/main.gd" id="1_elqb8"]
 [ext_resource type="PackedScene" uid="uid://d2wa8rj0ch5xm" path="res://scenes/cursor.tscn" id="2_rvslj"]
-[ext_resource type="PackedScene" uid="uid://cfgiegege4oqe" path="res://scenes/HUD.tscn" id="3_0bbpv"]
 
 [node name="Main" type="Node" unique_id=86002062]
 script = ExtResource("1_elqb8")
 
 [node name="Cursor" parent="." unique_id=1608051777 instance=ExtResource("2_rvslj")]
 z_index = 4001
-
-[node name="HUD" parent="." unique_id=1314009976 instance=ExtResource("3_0bbpv")]
-z_index = 4000

@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://xeoebt3q2syw"]
+
+[ext_resource type="Script" uid="uid://bxx7k3riu0n8q" path="res://scripts/shop.gd" id="1_2fc2m"]
+[ext_resource type="Texture2D" uid="uid://cpbx8cypq41pb" path="res://assets/UI/YourShop.png" id="2_8r1wq"]
+[ext_resource type="PackedScene" uid="uid://c8r52knttc0ur" path="res://scenes/inventory_row.tscn" id="2_ajxib"]
+[ext_resource type="Texture2D" uid="uid://bx0cesltiqcad" path="res://assets/UI/ScrollBar.png" id="3_ajxib"]
+[ext_resource type="Texture2D" uid="uid://cl2hqflts5yhh" path="res://assets/UI/ScrollBar_hover.png" id="4_y6sft"]
+[ext_resource type="Texture2D" uid="uid://btyoxml5y1vkk" path="res://assets/UI/bar.png" id="5_m4ofw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3mbq"]
+texture = ExtResource("3_ajxib")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hsmw"]
+texture = ExtResource("4_y6sft")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twldb"]
+texture = ExtResource("4_y6sft")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cuoo"]
+texture = ExtResource("5_m4ofw")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_5cvum"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_k3mbq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_7hsmw")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_twldb")
+VScrollBar/styles/scroll = SubResource("StyleBoxTexture_8cuoo")
+
+[node name="Shop" type="Control" unique_id=2038375965]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2fc2m")
+shop_row_scene = ExtResource("2_ajxib")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1513431028]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_8r1wq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect" unique_id=1722236746]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 48.0
+offset_right = 121.0
+offset_bottom = 173.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextureRect/MarginContainer" unique_id=1128894492]
+layout_mode = 2
+theme = SubResource("Theme_5cvum")
+scroll_vertical_custom_step = 4.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer/ScrollContainer" unique_id=1323435762]
+layout_mode = 2

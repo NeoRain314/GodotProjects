@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cvvklhwjm5d8t"]
+
+[ext_resource type="PackedScene" uid="uid://xeoebt3q2syw" path="res://scenes/shop.tscn" id="1_hv4jo"]
+
+[node name="YourShop" type="Node" unique_id=552490247]
+
+[node name="Shop" parent="." unique_id=2038375965 instance=ExtResource("1_hv4jo")]

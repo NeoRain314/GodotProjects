@@ -19,12 +19,13 @@ config/features=PackedStringArray("4.7", "Mobile")
 GameManagerAl="*uid://btl3mrrl7g7uw"
 InventoryManagerAl="*uid://c1eo4agsaf5hy"
 ItemManagerAl="*uid://m847d7ckvp4h"
+ShopManagerAl="*uid://jpy7eq3p2bnf"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
-window/size/mode=3
+window/size/mode=1
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://bi3ry1yjddqaq"
