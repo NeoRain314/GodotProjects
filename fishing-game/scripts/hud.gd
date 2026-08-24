@@ -1,11 +1,10 @@
 extends Control
 
-@export var inv_row_scene: PackedScene
-@onready var inv_container = $Inventory/MarginContainer/ScrollContainer/VBoxContainer
 @onready var inv_panel =  $Inventory
 
 @onready var inv_button = $InventoryButton
 @onready var inv_button_lable = $InventoryButton/Label
+
 #inv_button textures:
 var texture_inv_button = preload("res://assets/UI/buttons/inv_button.png")
 var texture_inv_button_hover = preload("res://assets/UI/buttons/inv_button_hover.png")
@@ -21,23 +20,10 @@ func _ready() -> void:
 	inv_panel.pivot_offset = Vector2(inv_panel.size.x, 0)
 	inv_button.pivot_offset = Vector2(inv_button.size.x, 0)
 	
-	
-	InventoryManagerAl.inventory_changed.connect(update_inventory_ui) #connect so signal from inv manager
-	update_inventory_ui()
 
 func _process(delta: float) -> void:
 	pass
 
-
-func update_inventory_ui():
-	for child in inv_container.get_children():
-		child.queue_free()
-	for item_id in InventoryManagerAl.contents:
-		var amount = InventoryManagerAl.contents[item_id]
-		
-		var row_instance = inv_row_scene.instantiate()
-		inv_container.add_child(row_instance)
-		row_instance.setup(item_id, amount)
 
 func open_inventory():
 	inv_panel.visible = true

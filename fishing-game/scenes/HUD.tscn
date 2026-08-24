@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://cfgiegege4oqe"]
 
 [ext_resource type="Script" uid="uid://hjf0mco8lksl" path="res://scripts/hud.gd" id="1_qpvh6"]
-[ext_resource type="PackedScene" uid="uid://c8r52knttc0ur" path="res://scenes/inventory_row.tscn" id="2_1etfg"]
-[ext_resource type="Texture2D" uid="uid://bx0cesltiqcad" path="res://assets/UI/ScrollBar.png" id="3_7hsmw"]
 [ext_resource type="Texture2D" uid="uid://c65are24p16io" path="res://assets/UI/Inventory_BoatTrip.png" id="4_7hsmw"]
-[ext_resource type="Texture2D" uid="uid://cl2hqflts5yhh" path="res://assets/UI/ScrollBar_hover.png" id="4_f6qnu"]
-[ext_resource type="Texture2D" uid="uid://btyoxml5y1vkk" path="res://assets/UI/bar.png" id="6_k4w17"]
+[ext_resource type="PackedScene" uid="uid://7a0x1ivpjna" path="res://scenes/inventory_container.tscn" id="4_k4w17"]
 [ext_resource type="Texture2D" uid="uid://jtsks0r8s6bf" path="res://assets/UI/buttons/inv_button.png" id="7_twldb"]
 [ext_resource type="Texture2D" uid="uid://bv53t1jc5dsok" path="res://assets/UI/buttons/inv_button_hover.png" id="8_8cuoo"]
 [ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="9_8cuoo"]
@@ -21,45 +18,10 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cuoo"]
-texture = ExtResource("3_7hsmw")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cf6ij"]
-texture = ExtResource("4_f6qnu")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_meimr"]
-texture = ExtResource("4_f6qnu")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rve7n"]
-texture = ExtResource("6_k4w17")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-
-[sub_resource type="Theme" id="Theme_3mgmr"]
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_8cuoo")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_cf6ij")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_meimr")
-VScrollBar/styles/scroll = SubResource("StyleBoxTexture_rve7n")
-
 [node name="HUD" type="Control" unique_id=472443716]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qpvh6")
-inv_row_scene = ExtResource("2_1etfg")
 
 [node name="Inventory" type="PanelContainer" parent="." unique_id=165426771]
 custom_minimum_size = Vector2(95, 60)
@@ -78,13 +40,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Inventory/MarginContainer" unique_id=1284781771]
-layout_mode = 2
-theme = SubResource("Theme_3mgmr")
-scroll_vertical_custom_step = 4.0
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory/MarginContainer/ScrollContainer" unique_id=379477520]
+[node name="Inv_ScrollContainer" parent="Inventory/MarginContainer" unique_id=1216981535 instance=ExtResource("4_k4w17")]
 layout_mode = 2
 
 [node name="InventoryButton" type="TextureButton" parent="." unique_id=688269934]
