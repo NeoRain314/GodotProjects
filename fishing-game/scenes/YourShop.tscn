@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bc8u4w1yyhjwj" path="res://assets/UI/shop/YourShup_Shield.png" id="5_iaq5m"]
 [ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="6_5cvum"]
 [ext_resource type="Texture2D" uid="uid://dp7rac4p1kcr7" path="res://assets/UI/shop/Vines_01.png" id="7_iaq5m"]
+[ext_resource type="Theme" uid="uid://c3f5or7rcicdc" path="res://themes/scroll_container_01.tres" id="7_iqsdl"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oglxd"]
 texture = ExtResource("5_iaq5m")
@@ -64,7 +65,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 55.0
 offset_right = -1.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 8
@@ -74,6 +74,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="ShopContainer" parent="your_shop/MarginContainer" unique_id=2038375965 instance=ExtResource("1_hv4jo")]
 layout_mode = 2
+theme = ExtResource("7_iqsdl")
 
 [node name="Panel" type="Panel" parent="." unique_id=1238063238]
 offset_left = 8.0

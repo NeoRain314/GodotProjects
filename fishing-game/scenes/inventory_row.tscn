@@ -8,8 +8,9 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjhab"]
 
 [node name="InventoryRow" type="PanelContainer" unique_id=1780145836]
-offset_right = 87.0
+offset_right = 98.0
 offset_bottom = 18.0
+size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_cjhab")
 script = ExtResource("1_xrh21")
 
@@ -27,8 +28,9 @@ expand_mode = 1
 stretch_mode = 3
 
 [node name="NameLabel" type="Label" parent="HBoxContainer" unique_id=954936389]
-custom_minimum_size = Vector2(30, 0)
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
 theme_override_constants/shadow_offset_x = 1
@@ -40,6 +42,7 @@ text = "Item"
 vertical_alignment = 1
 
 [node name="_spacing1" type="Control" parent="HBoxContainer" unique_id=1578941581]
+visible = false
 layout_mode = 2
 
 [node name="AmountLabel" type="Label" parent="HBoxContainer" unique_id=1793668684]
@@ -52,6 +55,7 @@ text = "1"
 vertical_alignment = 1
 
 [node name="_spacing2" type="Control" parent="HBoxContainer" unique_id=831561232]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
