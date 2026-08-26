@@ -2,6 +2,7 @@ extends ScrollContainer
 
 @onready var inv_container = $VBoxContainer
 @export var inv_row_scene: PackedScene
+@export var inv_type = 0 #0: normal, 1: in your shop
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,4 +22,4 @@ func update_inventory_ui():
 		
 		var row_instance = inv_row_scene.instantiate()
 		inv_container.add_child(row_instance)
-		row_instance.setup(item_id, amount)
+		row_instance.setup(item_id, amount, inv_type)

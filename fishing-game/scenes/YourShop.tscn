@@ -39,6 +39,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="Inv_ScrollContainer" parent="inventory/MarginContainer" unique_id=1216981535 instance=ExtResource("3_w6uqs")]
 layout_mode = 2
+inv_type = 1
 
 [node name="Label" type="Label" parent="inventory" unique_id=1920104025]
 layout_mode = 0

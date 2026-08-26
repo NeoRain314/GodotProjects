@@ -12,5 +12,5 @@ texture = ExtResource("3_vu1xb")
 icon_texture = ExtResource("1_vu1xb")
 weight = 100.0
 selling_price = 2
-tags = 2
+tags = 6
 metadata/_custom_type_script = "uid://ck6bmoul4sxyn"

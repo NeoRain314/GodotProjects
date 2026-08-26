@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_kyx1q")
-selling_price = 2
 id = "2"
 name = "LinaDoof"
 texture = ExtResource("1_24lur")
 icon_texture = ExtResource("1_24lur")
 weight = 100.0
-tags = 3
+selling_price = 2
+tags = 7
 metadata/_custom_type_script = "uid://dptw27lrwp5vj"

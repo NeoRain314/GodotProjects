@@ -77,3 +77,6 @@ offset_transform_enabled = true
 offset_transform_position = Vector2(0, 2)
 texture = ExtResource("3_cjhab")
 stretch_mode = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

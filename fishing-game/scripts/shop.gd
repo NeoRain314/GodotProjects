@@ -22,4 +22,4 @@ func update_shop_ui(shop):
 		
 		var row_instance = shop_row_scene.instantiate()
 		shop_container.add_child(row_instance)
-		row_instance.setup(item_id, amount, 1)
+		row_instance.setup(item_id, amount, 2)
