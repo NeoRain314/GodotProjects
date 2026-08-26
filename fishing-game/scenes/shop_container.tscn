@@ -2,63 +2,19 @@
 
 [ext_resource type="Script" uid="uid://bxx7k3riu0n8q" path="res://scripts/shop.gd" id="1_xtjva"]
 [ext_resource type="PackedScene" uid="uid://c8r52knttc0ur" path="res://scenes/inventory_row.tscn" id="2_r6g6m"]
-[ext_resource type="Texture2D" uid="uid://bx0cesltiqcad" path="res://assets/UI/ScrollBar.png" id="4_5s83i"]
-[ext_resource type="Texture2D" uid="uid://cl2hqflts5yhh" path="res://assets/UI/ScrollBar_hover.png" id="5_etfns"]
-[ext_resource type="Texture2D" uid="uid://btyoxml5y1vkk" path="res://assets/UI/bar.png" id="6_8c0kf"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k3mbq"]
-texture = ExtResource("4_5s83i")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7hsmw"]
-texture = ExtResource("5_etfns")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twldb"]
-texture = ExtResource("5_etfns")
-texture_margin_left = 1.0
-texture_margin_top = 1.0
-texture_margin_right = 1.0
-texture_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8cuoo"]
-texture = ExtResource("6_8c0kf")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-
-[sub_resource type="Theme" id="Theme_5cvum"]
-VScrollBar/styles/grabber = SubResource("StyleBoxTexture_k3mbq")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_7hsmw")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_twldb")
-VScrollBar/styles/scroll = SubResource("StyleBoxTexture_8cuoo")
-
-[node name="ShopContainer" type="Control" unique_id=2038375965]
-layout_mode = 3
+[node name="ShopContainer" type="ScrollContainer" unique_id=800218388]
+anchors_preset = -1
 anchor_right = 0.54300004
 anchor_bottom = 1.0
 offset_right = -39.76001
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_xtjva")
 shop_row_scene = ExtResource("2_r6g6m")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1128894492]
-layout_mode = 0
-offset_top = 1.0
-offset_right = 123.0
-offset_bottom = 179.0
-theme = SubResource("Theme_5cvum")
-scroll_vertical_custom_step = 4.0
-horizontal_scroll_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=1323435762]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1323435762]
 layout_mode = 2
 size_flags_horizontal = 3

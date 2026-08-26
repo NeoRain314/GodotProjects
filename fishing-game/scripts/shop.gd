@@ -1,7 +1,7 @@
 extends Control
 
 @export var shop_row_scene: PackedScene
-@onready var shop_container = $ScrollContainer/VBoxContainer
+@onready var shop_container = $VBoxContainer
 
 @export var shop_bg_texture: Texture2D
 

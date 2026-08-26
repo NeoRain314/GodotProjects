@@ -41,9 +41,9 @@ func apply_style(font_color: Color, bg_color: Color = Color("00000000"), border_
 	style_box.corner_radius_bottom_left = 4
 	style_box.corner_radius_bottom_right = 4
 	
-	style_box.border_color = border_color
-	style_box.border_width_left = 1
-	style_box.border_width_right = 1
-	style_box.border_width_top = 1
-	style_box.border_width_bottom = 1
+	#style_box.border_color = border_color
+	#style_box.border_width_left = 1
+	#style_box.border_width_right = 1
+	#style_box.border_width_top = 1
+	#style_box.border_width_bottom = 1
 	add_theme_stylebox_override("panel", style_box)
