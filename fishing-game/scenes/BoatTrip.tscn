@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://d3kmftwjkxumg"]
 
 [ext_resource type="PackedScene" uid="uid://doodhyny7bqo" path="res://scenes/water.tscn" id="1_t6ac7"]
+[ext_resource type="Script" uid="uid://dp3fpg14iwms4" path="res://scripts/boat_trip.gd" id="1_th4qu"]
 [ext_resource type="PackedScene" uid="uid://ct543xioph45k" path="res://scenes/boat.tscn" id="2_x5psi"]
 [ext_resource type="PackedScene" uid="uid://b21aqojl2tpfl" path="res://scenes/fishing_rod.tscn" id="3_0wk76"]
 [ext_resource type="PackedScene" uid="uid://c3xp4cvtvi4vk" path="res://scenes/fishing_net.tscn" id="4_x5psi"]
 [ext_resource type="PackedScene" uid="uid://cfgiegege4oqe" path="res://scenes/HUD.tscn" id="5_0wk76"]
+[ext_resource type="Texture2D" uid="uid://bc8u4w1yyhjwj" path="res://assets/UI/shop/YourShup_Shield.png" id="6_w37cd"]
+[ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="7_th4qu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0j2lw"]
+texture = ExtResource("6_w37cd")
+texture_margin_left = 24.0
+texture_margin_top = 13.0
+texture_margin_right = 24.0
+texture_margin_bottom = 19.0
 
 [node name="BoatTrip" type="Node" unique_id=1120951722]
+script = ExtResource("1_th4qu")
 
 [node name="Water" parent="." unique_id=1296930 instance=ExtResource("1_t6ac7")]
 
@@ -23,3 +34,31 @@ position = Vector2(-7, -35)
 position = Vector2(160, 90)
 
 [node name="HUD" parent="." unique_id=472443716 instance=ExtResource("5_0wk76")]
+
+[node name="Panel" type="Panel" parent="." unique_id=586980401]
+offset_left = 2.0
+offset_right = 70.0
+offset_bottom = 43.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0j2lw")
+
+[node name="Label_Timer" type="Label" parent="Panel" unique_id=2130111099]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 47.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("7_th4qu")
+theme_override_font_sizes/font_size = 8
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+max_lines_visible = 2
+
+[node name="Timer" type="Timer" parent="Panel" unique_id=46450078]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Panel/Timer" to="." method="_on_timer_timeout"]
