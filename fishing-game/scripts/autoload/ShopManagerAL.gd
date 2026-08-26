@@ -1,19 +1,21 @@
 extends Node
 
-signal shop_changed
+signal shop_changed(shop)
 
-var contents = {}
+var your_shop = {}
+
+var game_shop = {}
 
 func _ready() -> void:
-	add_item("test_rod",1)
-	add_item("diamond",3)
+	add_item(your_shop, "1",1)
+	add_item(your_shop, "diamond",3)
 
-func add_item(item_id: String, amount: int = 1):
-	if contents.has(item_id): contents[item_id] += amount	
-	else:contents[item_id] = amount
-	shop_changed.emit()
+func add_item(shop, item_id: String, amount: int = 1):
+	if shop.has(item_id): shop[item_id] += amount	
+	else:shop[item_id] = amount
+	shop_changed.emit(shop)
 
-func remove_item(item_id: String, amount: int = 1):
-	if contents.has(item_id): contents[item_id] -= amount
-	if contents[item_id] >= 0: contents.erase(item_id)
-	shop_changed.emit()
+func remove_item(shop, item_id: String, amount: int = 1):
+	if shop.has(item_id): shop[item_id] -= amount
+	if shop[item_id] >= 0: shop.erase(item_id)
+	shop_changed.emit(shop)

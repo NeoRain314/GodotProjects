@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cvvklhwjm5d8t"]
 
+[ext_resource type="Script" uid="uid://dlqyga5g0ohk7" path="res://scripts/your_shop.gd" id="1_5cvum"]
 [ext_resource type="Texture2D" uid="uid://dul4xv1352vlv" path="res://assets/UI/shop/BigPanel.png" id="1_cdur2"]
 [ext_resource type="PackedScene" uid="uid://xeoebt3q2syw" path="res://scenes/shop_container.tscn" id="1_hv4jo"]
 [ext_resource type="Texture2D" uid="uid://mqxq8hplwyc2" path="res://assets/UI/shop/YourShop_Panel1.png" id="2_w6uqs"]
@@ -16,6 +17,7 @@ texture_margin_right = 24.0
 texture_margin_bottom = 19.0
 
 [node name="YourShop" type="Node" unique_id=552490247]
+script = ExtResource("1_5cvum")
 
 [node name="inventory" type="TextureRect" parent="." unique_id=1179050078]
 offset_left = 128.0
@@ -77,7 +79,7 @@ offset_right = 121.0
 offset_bottom = 56.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_oglxd")
 
-[node name="Label" type="Label" parent="Panel" unique_id=511633452]
+[node name="Label_ShopName" type="Label" parent="Panel" unique_id=511633452]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 15.0
@@ -99,3 +101,14 @@ offset_right = 148.0
 offset_bottom = 180.0
 texture = ExtResource("7_iaq5m")
 stretch_mode = 4
+
+[node name="Button_StartTrip" type="Button" parent="." unique_id=906376271]
+offset_left = 236.0
+offset_top = 25.0
+offset_right = 314.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("6_5cvum")
+theme_override_font_sizes/font_size = 8
+text = "go on boat trip"
+
+[connection signal="pressed" from="Button_StartTrip" to="." method="_on_button_start_trip_pressed"]
