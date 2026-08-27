@@ -18,5 +18,5 @@ func add_item(item_id: String, amount: int = 1):
 
 func remove_item(item_id: String, amount: int = 1):
 	if contents.has(item_id): contents[item_id] -= amount
-	if contents[item_id] >= 0: contents.erase(item_id)
+	if contents[item_id] <= 0: contents.erase(item_id)
 	inventory_changed.emit()

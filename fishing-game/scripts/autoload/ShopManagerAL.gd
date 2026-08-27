@@ -17,5 +17,5 @@ func add_item(shop, item_id: String, amount: int = 1):
 
 func remove_item(shop, item_id: String, amount: int = 1):
 	if shop.has(item_id): shop[item_id] -= amount
-	if shop[item_id] >= 0: shop.erase(item_id)
+	if shop[item_id] <= 0: shop.erase(item_id)
 	shop_changed.emit(shop)

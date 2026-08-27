@@ -5,6 +5,8 @@ enum RowType {INVENTORY, INVENTORY_SHOP, YOUR_SHOP, GAME_SHOP }
 var type
 var item
 
+var is_mouse_hovering: bool = false
+
 @onready var item_icon = $HBoxContainer/Icon
 @onready var item_name = $HBoxContainer/NameLabel
 @onready var item_amount = $HBoxContainer/AmountLabel
@@ -59,8 +61,21 @@ func apply_style(font_color: Color, bg_color: Color = Color("00000000"), border_
 	#style_box.border_width_bottom = 1
 	add_theme_stylebox_override("panel", style_box)
 
+func _process(delta: float) -> void:
+	if  Input.is_action_just_released("mouse_click") and is_mouse_hovering:
+		match type:
+			RowType.YOUR_SHOP: #get items back
+				ShopManagerAl.remove_item(ShopManagerAl.your_shop, item.id, 1)	
+				InventoryManagerAl.add_item(item.id)	
+			RowType.GAME_SHOP: #buy items
+				pass	 #buy		
+			RowType.INVENTORY_SHOP: #put items in shop
+				if item.can_be_sold():
+					InventoryManagerAl.remove_item(item.id)	
+					ShopManagerAl.add_item(ShopManagerAl.your_shop, item.id)	
 
 func _on_mouse_entered() -> void:
+	is_mouse_hovering = true
 	match type:
 		RowType.YOUR_SHOP:
 			GameManagerAl.set_cursor(GameManagerAl.cursor_select, "get back")				
@@ -71,4 +86,5 @@ func _on_mouse_entered() -> void:
 
 
 func _on_mouse_exited() -> void:
-		GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
+	is_mouse_hovering = false
+	GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
