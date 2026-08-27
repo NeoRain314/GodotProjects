@@ -1,5 +1,7 @@
 extends Node
 
+var g_coins = 20
+
 var curr_cursor_asset = 0
 var curr_cursor_text = ""
 

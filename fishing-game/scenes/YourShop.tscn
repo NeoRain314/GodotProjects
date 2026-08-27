@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="6_5cvum"]
 [ext_resource type="Texture2D" uid="uid://dp7rac4p1kcr7" path="res://assets/UI/shop/Vines_01.png" id="7_iaq5m"]
 [ext_resource type="Theme" uid="uid://c3f5or7rcicdc" path="res://themes/scroll_container_01.tres" id="7_iqsdl"]
+[ext_resource type="Texture2D" uid="uid://cln01qubbbn3o" path="res://assets/UI/shop/Coins_Icon.png" id="10_4pdu2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oglxd"]
 texture = ExtResource("5_iaq5m")
@@ -114,5 +115,22 @@ offset_bottom = 47.0
 theme_override_fonts/font = ExtResource("6_5cvum")
 theme_override_font_sizes/font_size = 8
 text = "go on boat trip"
+
+[node name="Coins" type="TextureRect" parent="." unique_id=1860069083]
+offset_left = 283.0
+offset_top = 4.0
+offset_right = 296.0
+offset_bottom = 15.0
+texture = ExtResource("10_4pdu2")
+
+[node name="Label_Coins" type="Label" parent="Coins" unique_id=2143962824]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 44.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("6_5cvum")
+theme_override_font_sizes/font_size = 8
+text = "0"
 
 [connection signal="pressed" from="Button_StartTrip" to="." method="_on_button_start_trip_pressed"]
