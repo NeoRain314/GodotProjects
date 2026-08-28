@@ -3,8 +3,8 @@ extends Resource
 
 @export var id: String = ""
 @export var name: String
-@export var texture: Texture2D
-@export var icon_texture: Texture2D
+@export var texture: Texture2D = load("res://assets/Item Icons/TextureNotFond.png")
+@export var icon_texture: Texture2D = load("res://assets/Item Icons/TextureNotFond.png")
 @export var weight : float
 @export var selling_price: int
 

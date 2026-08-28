@@ -6,7 +6,7 @@ var rod_catchable_items: Array = []
 var net_catchable_items: Array = []
 
 # upgradable items #
-var tierlist_fishing_rod: Array = ["test_rod", "test_net", "diamond"]
+var tierlist_fishing_rod: Array = ["test_rod", "test_net", "test_rod", "test_net"]
 var curr_tier_fishing_rod: int = 0
 
 

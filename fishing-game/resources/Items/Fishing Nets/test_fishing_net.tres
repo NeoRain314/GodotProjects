@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="FishingNetData" format=3 uid="uid://c7fi00au6rsj2"]
 
+[ext_resource type="Texture2D" uid="uid://c41rnndwvup7f" path="res://assets/Item Icons/TextureNotFond.png" id="1_3gkq4"]
 [ext_resource type="Script" uid="uid://dy1maa75reqgx" path="res://resources/fishing_net_resource.gd" id="1_7x66i"]
 
 [resource]
 script = ExtResource("1_7x66i")
 catch_time = [1, 2]
 catch_slots = 3
+upgrade_price = 20
 id = "test_net"
 name = "Test Fishing Net"
+icon_texture = ExtResource("1_3gkq4")
 metadata/_custom_type_script = "uid://dy1maa75reqgx"
