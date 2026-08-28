@@ -13,6 +13,7 @@ var cursor_click = load("res://assets/UI/cursors/cursor_2.png")
 #scenes
 var scene_boat_trip = preload("res://scenes/BoatTrip.tscn")
 var scene_your_shop = preload("res://scenes/YourShop.tscn")
+var scene_game_shop = preload("res://scenes/GameShop.tscn")
 
 func _ready() -> void:
 	pass

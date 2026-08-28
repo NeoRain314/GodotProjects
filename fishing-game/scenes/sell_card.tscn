@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dh26ph6nwgn4k"]
+
+[ext_resource type="Script" uid="uid://usfrmy46kkld" path="res://scripts/sell_card.gd" id="1_bo3ye"]
+[ext_resource type="Texture2D" uid="uid://cxkobm4a78evb" path="res://assets/UI/shop/SellPanel.png" id="1_g4yjk"]
+[ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="3_bhcko"]
+[ext_resource type="Texture2D" uid="uid://c41rnndwvup7f" path="res://assets/Item Icons/TextureNotFond.png" id="3_bo3ye"]
+[ext_resource type="Texture2D" uid="uid://cexogr6a4g35n" path="res://assets/UI/shop/Coins_Icon_2.png" id="4_c06d6"]
+
+[node name="SellCard" type="Control" unique_id=1313537373]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 46.0
+offset_bottom = 63.0
+script = ExtResource("1_bo3ye")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=591978478]
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 54.0
+texture = ExtResource("1_g4yjk")
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="TextureRect2" unique_id=1731989894]
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 26.0
+offset_bottom = 21.0
+texture = ExtResource("3_bo3ye")
+stretch_mode = 3
+
+[node name="Price" type="Label" parent="TextureRect2" unique_id=2144574775]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 23.0
+offset_right = 30.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_bhcko")
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 1
+
+[node name="CoinTexture" type="TextureRect" parent="TextureRect2/Price" unique_id=524021893]
+layout_mode = 0
+offset_left = -12.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 10.0
+texture = ExtResource("4_c06d6")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="TextureRect2" unique_id=1881018705]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 34.0
+offset_right = 33.0
+offset_bottom = 49.0
+theme_override_fonts/font = ExtResource("3_bhcko")
+theme_override_font_sizes/font_size = 4
+text = "upgrade"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2112268567]
+visible = false
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 54.0
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2

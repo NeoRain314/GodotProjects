@@ -10,7 +10,7 @@ func _ready() -> void:
 	GameManagerAl.set_cursor(GameManagerAl.cursor_norm, "")
 	
 	#load start scene
-	load_scene(GameManagerAl.scene_your_shop)
+	load_scene(GameManagerAl.scene_game_shop)
 
 func _process(delta: float) -> void:
 	pass

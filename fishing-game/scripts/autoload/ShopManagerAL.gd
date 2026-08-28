@@ -7,8 +7,8 @@ var your_shop = {}
 var game_shop = {}
 
 func _ready() -> void:
-	add_item(your_shop, "1",1)
-	add_item(your_shop, "diamond",3)
+	#add_item(your_shop, "diamond",3)
+	pass
 
 func add_item(shop, item_id: String, amount: int = 1):
 	if shop.has(item_id): shop[item_id] += amount	

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://clg6tf4spsfuy"]
+
+[ext_resource type="Texture2D" uid="uid://dul4xv1352vlv" path="res://assets/UI/shop/BigPanel.png" id="1_f3vg3"]
+[ext_resource type="Script" uid="uid://djf0hbt26rix3" path="res://scripts/game_shop.gd" id="1_yt4xr"]
+[ext_resource type="PackedScene" uid="uid://7a0x1ivpjna" path="res://scenes/inventory_container.tscn" id="2_nrrxm"]
+[ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="3_l6648"]
+[ext_resource type="Texture2D" uid="uid://c8o7etf1euuwq" path="res://assets/UI/shop/Shop.png" id="4_yt4xr"]
+[ext_resource type="PackedScene" uid="uid://dh26ph6nwgn4k" path="res://scenes/sell_card.tscn" id="5_nrrxm"]
+[ext_resource type="Texture2D" uid="uid://cln01qubbbn3o" path="res://assets/UI/shop/Coins_Icon.png" id="7_07a7n"]
+
+[node name="GameShop" type="Node" unique_id=290985248]
+script = ExtResource("1_yt4xr")
+
+[node name="inventory" type="TextureRect" parent="." unique_id=2020272484]
+offset_left = 209.0
+offset_right = 401.0
+offset_bottom = 180.0
+texture = ExtResource("1_f3vg3")
+
+[node name="MarginContainer" type="MarginContainer" parent="inventory" unique_id=1668561694]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 35.0
+offset_right = 103.0
+offset_bottom = 173.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 0
+
+[node name="Inv_ScrollContainer" parent="inventory/MarginContainer" unique_id=1216981535 instance=ExtResource("2_nrrxm")]
+layout_mode = 2
+inv_type = 1
+
+[node name="Label" type="Label" parent="inventory" unique_id=1372271791]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 79.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("3_l6648")
+theme_override_font_sizes/font_size = 8
+text = "Inventory"
+max_lines_visible = 2
+
+[node name="GameShop" type="TextureRect" parent="." unique_id=1957490704]
+offset_right = 128.0
+offset_bottom = 180.0
+texture = ExtResource("4_yt4xr")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameShop" unique_id=1357823946]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 48.0
+offset_right = 133.0
+offset_bottom = 173.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GameShop/MarginContainer" unique_id=537666238]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="GameShop/MarginContainer/ScrollContainer" unique_id=1106237922]
+layout_mode = 2
+columns = 3
+
+[node name="SellCard" parent="GameShop/MarginContainer/ScrollContainer/GridContainer" unique_id=1313537373 instance=ExtResource("5_nrrxm")]
+layout_mode = 2
+type = "Fishing Rod"
+
+[node name="Label_YourCoins" type="Label" parent="." unique_id=282419146]
+offset_left = 299.0
+offset_top = 4.0
+offset_right = 327.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("3_l6648")
+theme_override_font_sizes/font_size = 8
+text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="Label_YourCoins" unique_id=386673246]
+layout_mode = 0
+offset_left = -16.0
+offset_right = -3.0
+offset_bottom = 11.0
+texture = ExtResource("7_07a7n")

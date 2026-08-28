@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_o5822")
 catch_time = [1, 1]
+upgrade_price = 10
 id = "test_rod"
 name = "Test Rod"
 icon_texture = ExtResource("2_gcrwl")
