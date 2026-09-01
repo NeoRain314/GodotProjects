@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dsd6s40tbtf5b"]
+
+[ext_resource type="Script" uid="uid://nbun27gnu2hm" path="res://scripts/upgrade_panel.gd" id="1_m7lo0"]
+[ext_resource type="Texture2D" uid="uid://c3q7br3x5svx6" path="res://assets/UI/shop/upgrade_panel.png" id="2_xgmt3"]
+[ext_resource type="Texture2D" uid="uid://c41rnndwvup7f" path="res://assets/Item Icons/TextureNotFond.png" id="3_opk4c"]
+[ext_resource type="FontFile" uid="uid://b85g6h0k61w48" path="res://fonts/Minecraftia-Regular.ttf" id="4_yw2xm"]
+[ext_resource type="Texture2D" uid="uid://cexogr6a4g35n" path="res://assets/UI/shop/Coins_Icon_2.png" id="5_wra8t"]
+[ext_resource type="Texture2D" uid="uid://bdrxnq82rfp8x" path="res://assets/UI/shop/upgrade_arrow.png" id="6_opk4c"]
+[ext_resource type="Texture2D" uid="uid://dy5n5iy1ce2i5" path="res://assets/Items/diamond.png" id="6_yw2xm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yw2xm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wra8t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dv5up"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt4xr"]
+
+[node name="UpgradePanel" type="Control" unique_id=1313537373]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 46.0
+offset_bottom = 63.0
+script = ExtResource("1_m7lo0")
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=591978478]
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 54.0
+texture = ExtResource("2_xgmt3")
+stretch_mode = 3
+
+[node name="Icon" type="TextureRect" parent="TextureRect2" unique_id=1731989894]
+custom_maximum_size = Vector2(16, 16)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 54.0
+offset_right = 22.0
+offset_bottom = 70.0
+texture = ExtResource("3_opk4c")
+stretch_mode = 3
+
+[node name="Price" type="Label" parent="TextureRect2" unique_id=2144574775]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 58.0
+offset_right = 129.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("4_yw2xm")
+theme_override_font_sizes/font_size = 6
+text = "100"
+horizontal_alignment = 2
+
+[node name="CoinTexture" type="TextureRect" parent="TextureRect2/Price" unique_id=524021893]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 10.0
+texture = ExtResource("5_wra8t")
+stretch_mode = 3
+
+[node name="RequiredResources" type="Label" parent="TextureRect2" unique_id=949097796]
+visible = false
+layout_mode = 0
+offset_left = 91.0
+offset_top = 58.0
+offset_right = 105.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("4_yw2xm")
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 1
+
+[node name="Texture" type="TextureRect" parent="TextureRect2/RequiredResources" unique_id=1894431597]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 12.0
+texture = ExtResource("6_yw2xm")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="TextureRect2" unique_id=1881018705]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 47.0
+offset_right = 66.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_colors/font_pressed_color = Color(0.47843137, 0.32941177, 0.14509805, 1)
+theme_override_colors/font_hover_color = Color(0.5652414, 0.3909244, 0.18146983, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.4787929, 0.32770053, 0.14550182, 1)
+theme_override_colors/font_disabled_color = Color(0.7019608, 0.49411765, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("4_yw2xm")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yw2xm")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wra8t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dv5up")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yt4xr")
+text = "Level 1"
+icon = ExtResource("6_opk4c")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2112268567]
+visible = false
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 54.0
+theme_override_constants/margin_left = -2
+theme_override_constants/margin_top = -2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[connection signal="pressed" from="TextureRect2/Button" to="." method="_on_button_pressed"]
