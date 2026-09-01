@@ -6,14 +6,14 @@ extends Control
 @onready var price_label = $TextureRect2/Price
 @onready var button = $TextureRect2/Button
 
-var curr_item_id = ""
-var curr_item_tier = 0
+var next_item_id = ""
+var next_item_tier = 1
 
-var curr_tier: Dictionary = {
+var player_curr_tier: Dictionary = { #list of all the tier the player has of all items
 	"Fishing Rod": ItemManagerAl.curr_tier_fishing_rod
 }
 
-var tier_list: Dictionary = {
+var tier_list: Dictionary = { #list that contains all tier lists of each item
 	"Fishing Rod": ItemManagerAl.tierlist_fishing_rod
 }
 
@@ -28,23 +28,27 @@ func _process(delta: float) -> void:
 
 
 func update_card():
-	curr_item_id = tier_list["Fishing Rod"][curr_item_tier]
-	var item = ItemManagerAl.get_item(curr_item_id)
+	next_item_id = tier_list["Fishing Rod"][next_item_tier]
+	var item = ItemManagerAl.get_item(next_item_id)
 	icon.texture = item.icon_texture
-	price_label.text = str(item.upgrade_price)
-	if curr_item_tier == 0:
+	price_label.text = str(item.unlock_price)
+	if next_item_tier == 0:
 		button.text = "unlock"
-	else: button.text = "upgrade"
+	else: button.text = "upgrade to Level " + str(next_item_tier)
 	
-	if curr_item_tier == tier_list["Fishing Rod"].size()-1:
+	if next_item_tier == tier_list["Fishing Rod"].size()-1:
 		button.text = "max"
 		button.disabled = true
+	
+	
+	print("next item to unlock: " + next_item_id)
+	print("current player item: " + tier_list["Fishing Rod"][next_item_tier-1])
 
 
 func _on_button_pressed() -> void:
-	var item = ItemManagerAl.get_item(curr_item_id)
-	if curr_item_tier < tier_list["Fishing Rod"].size()-1 and GameManagerAl.g_coins >= item.upgrade_price:
-		curr_item_tier += 1
-		GameManagerAl.g_coins -= item.upgrade_price
+	var item = ItemManagerAl.get_item(next_item_id)
+	if next_item_tier < tier_list["Fishing Rod"].size()-1 and GameManagerAl.g_coins >= item.unlock_price:
+		next_item_tier += 1
+		GameManagerAl.g_coins -= item.unlock_price
 		update_card()
 		

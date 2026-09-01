@@ -15,7 +15,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func load_scene(scene):
+func load_scene(scene_path):
+	var scene = load(scene_path)
+	GameManagerAl.previous_scene = GameManagerAl.current_scene
+	GameManagerAl.current_scene = scene_path
+	#print(GameManagerAl.current_scene)
+	
 	if current_scene_node != null:
 		current_scene_node.queue_free()
 	current_scene_node = scene.instantiate()

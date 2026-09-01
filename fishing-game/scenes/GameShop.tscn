@@ -88,3 +88,14 @@ offset_left = -16.0
 offset_right = -3.0
 offset_bottom = 11.0
 texture = ExtResource("7_07a7n")
+
+[node name="Button_YourShop" type="Button" parent="." unique_id=468390589]
+offset_left = 221.0
+offset_top = 152.0
+offset_right = 316.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("3_l6648")
+theme_override_font_sizes/font_size = 8
+text = "Back to your shop"
+
+[connection signal="pressed" from="Button_YourShop" to="." method="_on_button_your_shop_pressed"]
